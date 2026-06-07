@@ -144,6 +144,7 @@ import { messages } from '../lib/site';
 			projectsStatus.hidden = true;
 			projectsTrack.classList.remove('hidden');
 			projectsTrack.classList.add('flex');
+			updateProjectNavigation();
 		} catch (error) {
 			projectsStatus.textContent = dictionary['projects.error'];
 			console.error(error);
@@ -179,6 +180,17 @@ import { messages } from '../lib/site';
 		});
 	}
 
+	function updateProjectNavigation() {
+		if (!projectsTrack || !projectsPreviousButton || !projectsNextButton) return;
+		const maxScroll = projectsTrack.scrollWidth - projectsTrack.clientWidth;
+		const currentScroll = projectsTrack.scrollLeft;
+
+		projectsPreviousButton.disabled = currentScroll <= 1;
+		projectsNextButton.disabled = currentScroll >= maxScroll - 1;
+	}
+
 	projectsPreviousButton?.addEventListener('click', () => scrollProjects(-1));
 	projectsNextButton?.addEventListener('click', () => scrollProjects(1));
+	projectsTrack?.addEventListener('scroll', updateProjectNavigation, { passive: true });
+	window.addEventListener('resize', updateProjectNavigation);
 </script>

@@ -24,9 +24,10 @@ import { t } from '../lib/site';
 
 	<div class="mt-8 grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 max-[640px]:gap-2">
 		<button
-			class="grid size-11 place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--text)] transition hover:bg-[var(--surface-muted)]"
+			class="grid size-11 place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--text)] transition enabled:cursor-pointer enabled:hover:bg-[var(--surface-muted)] disabled:cursor-not-allowed disabled:opacity-35"
 			type="button"
 			data-projects-prev
+			disabled
 			aria-label={t('projects.previous')}
 			data-i18n-attr="aria-label:projects.previous"
 		>
@@ -44,9 +45,10 @@ import { t } from '../lib/site';
 		</div>
 
 		<button
-			class="grid size-11 place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--text)] transition hover:bg-[var(--surface-muted)]"
+			class="grid size-11 place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--text)] transition enabled:cursor-pointer enabled:hover:bg-[var(--surface-muted)] disabled:cursor-not-allowed disabled:opacity-35"
 			type="button"
 			data-projects-next
+			disabled
 			aria-label={t('projects.next')}
 			data-i18n-attr="aria-label:projects.next"
 		>
