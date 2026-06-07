@@ -1,7 +1,7 @@
 {
 	"meta.title": "Portfolio",
 	"meta.description": "Portfolio profissional de arquiteto de software, com projetos, experiência e contato.",
-	"brand.name": "Seu Nome",
+	"brand.name": "Dheovani Xavier",
 	"nav.home": "Início",
 	"nav.about": "Sobre",
 	"nav.projects": "Projetos",
@@ -33,6 +33,5 @@
 	"sections.experience.text": "Espaço reservado para experiência profissional e habilidades.",
 	"sections.contact.eyebrow": "Contato",
 	"sections.contact.title": "Vamos conversar",
-	"sections.contact.text": "Espaço reservado para email, redes e chamadas para contato.",
-	"footer.faviconCredit": "Favicon criado por"
+	"sections.contact.text": "Espaço reservado para email, redes e chamadas para contato."
 }

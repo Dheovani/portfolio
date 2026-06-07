@@ -1,7 +1,7 @@
 {
 	"meta.title": "Portfolio",
 	"meta.description": "Professional portfolio of a software architect, with projects, experience, and contact information.",
-	"brand.name": "Your Name",
+	"brand.name": "Dheovani Xavier",
 	"nav.home": "Home",
 	"nav.about": "About",
 	"nav.projects": "Projects",
@@ -33,6 +33,5 @@
 	"sections.experience.text": "Reserved space for professional experience and skills.",
 	"sections.contact.eyebrow": "Contact",
 	"sections.contact.title": "Let us talk",
-	"sections.contact.text": "Reserved space for email, social links, and contact prompts.",
-	"footer.faviconCredit": "Favicon created by"
+	"sections.contact.text": "Reserved space for email, social links, and contact prompts."
 }

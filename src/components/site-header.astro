@@ -13,9 +13,19 @@ import { navItems, t } from '../lib/site';
 		data-i18n-attr="aria-label:nav.home"
 	>
 		<span
-			class="grid aspect-square w-9 place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--accent)]"
-			aria-hidden="true">D</span
+			class="grid aspect-square w-9 overflow-hidden rounded-full"
+			aria-hidden="true"
 		>
+			<img
+				class="size-full object-cover"
+				src="/icon-light.png"
+				alt=""
+				width="36"
+				height="36"
+				loading="eager"
+				data-brand-icon
+			/>
+		</span>
 		<span data-i18n="brand.name">{t('brand.name')}</span>
 	</a>
 

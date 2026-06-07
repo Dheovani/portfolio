@@ -5,6 +5,7 @@ import { messages } from '../lib/site';
 <script define:vars={{ translations: messages }}>
 	const root = document.documentElement;
 	const themeButton = document.querySelector('[data-theme-toggle]');
+	const brandIcon = document.querySelector('[data-brand-icon]');
 	const langButton = document.querySelector('[data-lang-toggle]');
 
 	const availableLanguages = Object.keys(translations);
@@ -26,6 +27,7 @@ import { messages } from '../lib/site';
 			?.setAttribute('content', theme === 'dark' ? '#111315' : '#f6f3ed');
 		themeButton?.setAttribute('aria-checked', String(theme === 'dark'));
 		themeButton?.setAttribute('data-state', theme === 'dark' ? 'checked' : 'unchecked');
+		brandIcon?.setAttribute('src', theme === 'dark' ? '/icon-dark.png' : '/icon-light.png');
 	}
 
 	function applyLanguage(lang) {
