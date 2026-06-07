@@ -2,7 +2,7 @@
 import { messages } from '../lib/site';
 ---
 
-<script define:vars={{ translations: messages }}>
+<script define:vars={{ translations: messages, baseUrl: import.meta.env.BASE_URL }}>
 	const root = document.documentElement;
 	const themeButton = document.querySelector('[data-theme-toggle]');
 	const brandIcon = document.querySelector('[data-brand-icon]');
@@ -21,6 +21,7 @@ import { messages } from '../lib/site';
 	});
 
 	const availableLanguages = Object.keys(translations);
+	const publicPath = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 
 	function getBrowserLanguage() {
 		const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
@@ -39,7 +40,7 @@ import { messages } from '../lib/site';
 			?.setAttribute('content', theme === 'dark' ? '#111315' : '#f6f3ed');
 		themeButton?.setAttribute('aria-checked', String(theme === 'dark'));
 		themeButton?.setAttribute('data-state', theme === 'dark' ? 'checked' : 'unchecked');
-		brandIcon?.setAttribute('src', theme === 'dark' ? '/icon-dark.png' : '/icon-light.png');
+		brandIcon?.setAttribute('src', theme === 'dark' ? `${publicPath}icon-dark.png` : `${publicPath}icon-light.png`);
 	}
 
 	function applyLanguage(lang) {
