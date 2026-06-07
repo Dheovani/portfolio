@@ -1,46 +1,130 @@
-# Astro Starter Kit: Basics
+# Portfolio - Dheovani Xavier
+
+Portfolio one-page desenvolvido com Astro e Tailwind CSS para apresentar atuação profissional, projetos pessoais, formação/certificações e canais de contato.
+
+## Stack
+
+- Astro 6
+- Tailwind CSS 4
+- TypeScript
+- HTML/CSS/JavaScript sem framework client-side pesado
+
+## Scripts
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev
+npm run build
+npm run preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+O servidor de desenvolvimento roda, por padrão, em `http://localhost:4321`.
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## Estrutura
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+src/
+  assets/
+    certificates/   PDFs dos certificados e diplomas
+    previews/       Imagens usadas como preview dos certificados
+  components/       Seções e componentes da página
+  layouts/          Layout HTML base
+  lib/              Configurações e dados estruturados
+  messages/         Traduções pt/en
+  pages/            Página principal
+  styles/           Tailwind e tokens globais de tema
+public/
+  favicon.ico
+  favicon.png
+  icon-light.png
+  icon-dark.png
+  picture.jpg
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Seções
 
-## 🧞 Commands
+- `hero-section.astro`: apresentação inicial.
+- `about-section.astro`: resumo profissional e foto.
+- `projects-section.astro`: carrossel de repositórios públicos carregados da API do GitHub.
+- `experience-section.astro`: timeline de formação e carrossel de certificados.
+- `contact-section.astro`: Gmail, Outlook, LinkedIn e GitHub.
 
-All commands are run from the root of the project, from a terminal:
+## Tradução
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+As mensagens ficam em:
 
-## 👀 Want to learn more?
+- `src/messages/pt.json`
+- `src/messages/en.json`
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+A linguagem inicial é escolhida a partir do navegador do usuário. A troca manual é salva em `localStorage`.
+
+## Tema
+
+O site possui modo claro e escuro. A preferência inicial usa `prefers-color-scheme`, e a escolha manual também é salva em `localStorage`.
+
+Os ícones do header alternam entre:
+
+- `public/icon-light.png`
+- `public/icon-dark.png`
+
+## Projetos do GitHub
+
+A seção de projetos busca os repositórios públicos diretamente de:
+
+```text
+https://api.github.com/users/Dheovani/repos?sort=updated&per_page=100
+```
+
+O carregamento acontece no navegador a cada acesso. Repositórios arquivados e forks são filtrados.
+
+## Certificados
+
+Os PDFs ficam em `src/assets/certificates`, e os previews em `src/assets/previews`.
+
+A lista usada pela seção de experiência é configurada em:
+
+```text
+src/lib/certificates.ts
+```
+
+## Build
+
+Para validar o projeto:
+
+```sh
+npm run build
+```
+
+A saída de produção é gerada em `dist/`.
+
+## GitHub Pages
+
+O projeto está configurado para publicação em:
+
+```text
+https://dheovani.github.io/portfolio/
+```
+
+A configuração fica em `astro.config.mjs`:
+
+```js
+export default defineConfig({
+	site: 'https://dheovani.github.io',
+	base: '/portfolio',
+});
+```
+
+O deploy automático é feito pelo workflow:
+
+```text
+.github/workflows/deploy.yml
+```
+
+Para publicar:
+
+1. Faça push para a branch `main`.
+2. No GitHub, acesse `Settings > Pages`.
+3. Em `Build and deployment`, selecione `GitHub Actions`.
+4. Aguarde o workflow `Deploy to GitHub Pages` finalizar.
+
+Com `base: '/portfolio'`, o site local em modo de desenvolvimento também usa o prefixo `/portfolio`.
