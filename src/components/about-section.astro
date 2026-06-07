@@ -1,0 +1,67 @@
+---
+import { t } from '../lib/site';
+---
+
+<section
+	class="grid scroll-mt-20 grid-cols-[minmax(260px,0.72fr)_minmax(0,1fr)] items-center gap-[clamp(1.5rem,5vw,5rem)] border-t border-[var(--line)] py-[clamp(4rem,9vw,7rem)] max-[820px]:grid-cols-1"
+	id="sobre"
+	aria-labelledby="about-title"
+>
+	<div
+		class="relative aspect-[3/2] overflow-hidden rounded-lg border border-[var(--line)] bg-[var(--surface-muted)] after:pointer-events-none after:absolute after:inset-0 after:shadow-[inset_0_0_0_1px_color-mix(in_srgb,var(--bg)_40%,transparent)]"
+	>
+		<img
+			class="block size-full object-cover object-center"
+			src="/picture.jpg"
+			alt={t('about.photoAlt')}
+			width="3072"
+			height="2048"
+			loading="lazy"
+			decoding="async"
+			data-i18n-attr="alt:about.photoAlt"
+		/>
+	</div>
+
+	<div>
+		<p class="mb-3.5 text-xs font-extrabold uppercase text-[var(--accent)]" data-i18n="about.eyebrow">
+			{t('about.eyebrow')}
+		</p>
+		<h2
+			class="max-w-[13ch] text-[clamp(2.35rem,5vw,4.5rem)] leading-none max-[820px]:max-w-[12ch]"
+			id="about-title"
+			data-i18n="about.title"
+		>
+			{t('about.title')}
+		</h2>
+		<div class="mt-6 grid max-w-[680px] gap-4 leading-7 text-[var(--muted)]">
+			<p data-i18n="about.paragraphOne">{t('about.paragraphOne')}</p>
+			<p data-i18n="about.paragraphTwo">{t('about.paragraphTwo')}</p>
+		</div>
+		<ul class="mt-8 grid grid-cols-3 gap-3 p-0 max-[820px]:grid-cols-1" aria-label="Destaques">
+			<li class="min-h-36 list-none rounded-lg border border-[var(--line)] bg-[var(--surface)] p-4 max-[820px]:min-h-0">
+				<strong class="block text-[0.95rem] text-[var(--text)]" data-i18n="about.highlightOneTitle">
+					{t('about.highlightOneTitle')}
+				</strong>
+				<span class="mt-2.5 block text-[0.92rem] leading-6 text-[var(--muted)]" data-i18n="about.highlightOneText">
+					{t('about.highlightOneText')}
+				</span>
+			</li>
+			<li class="min-h-36 list-none rounded-lg border border-[var(--line)] bg-[var(--surface)] p-4 max-[820px]:min-h-0">
+				<strong class="block text-[0.95rem] text-[var(--text)]" data-i18n="about.highlightTwoTitle">
+					{t('about.highlightTwoTitle')}
+				</strong>
+				<span class="mt-2.5 block text-[0.92rem] leading-6 text-[var(--muted)]" data-i18n="about.highlightTwoText">
+					{t('about.highlightTwoText')}
+				</span>
+			</li>
+			<li class="min-h-36 list-none rounded-lg border border-[var(--line)] bg-[var(--surface)] p-4 max-[820px]:min-h-0">
+				<strong class="block text-[0.95rem] text-[var(--text)]" data-i18n="about.highlightThreeTitle">
+					{t('about.highlightThreeTitle')}
+				</strong>
+				<span class="mt-2.5 block text-[0.92rem] leading-6 text-[var(--muted)]" data-i18n="about.highlightThreeText">
+					{t('about.highlightThreeText')}
+				</span>
+			</li>
+		</ul>
+	</div>
+</section>

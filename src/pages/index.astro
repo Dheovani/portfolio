@@ -1,4 +1,5 @@
 ---
+import AboutSection from '../components/about-section.astro';
 import ClientPreferences from '../components/client-preferences.astro';
 import ContentSection from '../components/content-section.astro';
 import HeroSection from '../components/hero-section.astro';
@@ -7,14 +8,20 @@ import SiteFooter from '../components/site-footer.astro';
 import SiteHeader from '../components/site-header.astro';
 
 import { sections } from '../lib/site';
-import '../styles/global.css';
 ---
 
 <Layout>
 	<SiteHeader />
-	<main>
+	<main class="mx-auto w-[min(1120px,calc(100%_-_2rem))]">
 		<HeroSection />
-		{sections.map((section) => <ContentSection id={section.id} sectionKey={section.key} />)}
+		<AboutSection />
+		{sections.map(
+			(section) =>
+				<ContentSection
+					id={section.id}
+					sectionKey={section.key}
+				/>
+		)}
 	</main>
 	<SiteFooter />
 	<ClientPreferences />
