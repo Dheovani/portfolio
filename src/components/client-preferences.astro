@@ -7,6 +7,10 @@ import { messages } from '../lib/site';
 	const themeButton = document.querySelector('[data-theme-toggle]');
 	const brandIcon = document.querySelector('[data-brand-icon]');
 	const langButton = document.querySelector('[data-lang-toggle]');
+	const projectsTrack = document.querySelector('[data-projects-track]');
+	const projectsStatus = document.querySelector('[data-projects-status]');
+	const projectsPreviousButton = document.querySelector('[data-projects-prev]');
+	const projectsNextButton = document.querySelector('[data-projects-next]');
 
 	const availableLanguages = Object.keys(translations);
 
@@ -51,6 +55,101 @@ import { messages } from '../lib/site';
 		if (langButton) langButton.textContent = lang === 'pt' ? 'EN' : 'PT';
 	}
 
+	function createProjectCard(project, dictionary) {
+		const tags = [
+			project.language,
+			...(project.topics ?? []).slice(0, 3),
+		].filter(Boolean);
+		const description = project.description || dictionary['projects.noDescription'];
+
+		const card = document.createElement('article');
+		card.className = 'project-card';
+
+		card.innerHTML = `
+			<div class="project-card-header">
+				<div>
+					<p class="project-card-language">${project.language || dictionary['projects.repository']}</p>
+					<h3 class="project-card-title"></h3>
+				</div>
+				<div class="project-card-stats" aria-label="GitHub stats">
+					<span>
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M11.48 3.5a.56.56 0 0 1 1.04 0l2.11 5.12a.56.56 0 0 0 .47.35l5.53.44a.56.56 0 0 1 .32.98l-4.21 3.6a.56.56 0 0 0-.18.55l1.29 5.39a.56.56 0 0 1-.84.61l-4.73-2.89a.56.56 0 0 0-.58 0l-4.73 2.89a.56.56 0 0 1-.84-.61l1.29-5.39a.56.56 0 0 0-.18-.55l-4.21-3.6a.56.56 0 0 1 .32-.98l5.53-.44a.56.56 0 0 0 .47-.35z" />
+						</svg>
+						${project.stargazers_count}
+					</span>
+					<span>${project.forks_count} forks</span>
+				</div>
+			</div>
+			<p class="project-card-description"></p>
+			<ul class="project-card-tags"></ul>
+			<a class="project-card-link" target="_blank" rel="noopener noreferrer">
+				<span>${dictionary['projects.openRepository']}</span>
+				<svg viewBox="0 0 24 24" aria-hidden="true">
+					<path d="M7 17 17 7"></path>
+					<path d="M7 7h10v10"></path>
+				</svg>
+			</a>
+		`;
+
+		card.querySelector('h3').textContent = project.name;
+		card.querySelector('.project-card-description').textContent = description;
+		card.querySelector('a').href = project.html_url;
+
+		const tagList = card.querySelector('ul');
+		tags.forEach((tag) => {
+			const item = document.createElement('li');
+			item.className = 'project-card-tag';
+			item.textContent = tag;
+			tagList.append(item);
+		});
+
+		return card;
+	}
+
+	async function loadProjects(lang) {
+		if (!projectsTrack || !projectsStatus) return;
+		const dictionary = translations[lang] ?? translations.pt;
+
+		projectsStatus.hidden = false;
+		projectsStatus.textContent = dictionary['projects.loading'];
+		projectsTrack.classList.add('hidden');
+		projectsTrack.replaceChildren();
+
+		try {
+			const response = await fetch('https://api.github.com/users/Dheovani/repos?sort=updated&per_page=100', {
+				headers: { Accept: 'application/vnd.github+json' },
+			});
+
+			if (!response.ok) throw new Error(`GitHub responded with ${response.status}`);
+
+			const repositories = await response.json();
+			const projects = repositories
+				.filter((repository) => !repository.fork && !repository.archived)
+				.sort((a, b) => {
+					const scoreA = a.stargazers_count * 10 + a.forks_count * 3 + (a.description ? 2 : 0);
+					const scoreB = b.stargazers_count * 10 + b.forks_count * 3 + (b.description ? 2 : 0);
+					return scoreB - scoreA || new Date(b.updated_at) - new Date(a.updated_at);
+				});
+
+			if (!projects.length) {
+				projectsStatus.textContent = dictionary['projects.empty'];
+				return;
+			}
+
+			projects.forEach((project) => {
+				projectsTrack.append(createProjectCard(project, dictionary));
+			});
+
+			projectsStatus.hidden = true;
+			projectsTrack.classList.remove('hidden');
+			projectsTrack.classList.add('flex');
+		} catch (error) {
+			projectsStatus.textContent = dictionary['projects.error'];
+			console.error(error);
+		}
+	}
+
 	const preferredTheme =
 		localStorage.getItem('portfolio-theme') ??
 		(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -58,12 +157,28 @@ import { messages } from '../lib/site';
 
 	applyTheme(preferredTheme);
 	applyLanguage(preferredLang);
+	loadProjects(preferredLang);
 
 	themeButton?.addEventListener('click', () => {
 		applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
 	});
 
 	langButton?.addEventListener('click', () => {
-		applyLanguage(root.dataset.lang === 'pt' ? 'en' : 'pt');
+		const nextLang = root.dataset.lang === 'pt' ? 'en' : 'pt';
+		applyLanguage(nextLang);
+		loadProjects(nextLang);
 	});
+
+	function scrollProjects(direction) {
+		if (!projectsTrack) return;
+		const firstCard = projectsTrack.querySelector('article');
+		const cardWidth = firstCard?.getBoundingClientRect().width ?? 320;
+		projectsTrack.scrollBy({
+			left: direction * (cardWidth + 16),
+			behavior: 'smooth',
+		});
+	}
+
+	projectsPreviousButton?.addEventListener('click', () => scrollProjects(-1));
+	projectsNextButton?.addEventListener('click', () => scrollProjects(1));
 </script>
