@@ -37,3 +37,26 @@ export const certificates = [
 		preview: microsoftPreview,
 	},
 ] as const;
+
+export const educationTimeline = [
+	{
+		periodKey: 'experience.timeline.bachelor.period',
+		titleKey: 'experience.bachelor.title',
+		descriptionKey: 'experience.timeline.bachelor.description',
+	},
+	{
+		periodKey: 'experience.timeline.microsoft.period',
+		titleKey: 'experience.microsoft.title',
+		descriptionKey: 'experience.timeline.microsoft.description',
+	},
+	{
+		periodKey: 'experience.timeline.architecture.period',
+		titleKey: 'experience.architecture.title',
+		descriptionKey: 'experience.timeline.architecture.description',
+	},
+	{
+		periodKey: 'experience.timeline.data.period',
+		titleKey: 'experience.data.title',
+		descriptionKey: 'experience.timeline.data.description',
+	},
+] as const;
