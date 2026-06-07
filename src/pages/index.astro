@@ -1,14 +1,12 @@
 ---
 import AboutSection from '../components/about-section.astro';
 import ClientPreferences from '../components/client-preferences.astro';
-import ContentSection from '../components/content-section.astro';
+import ContactSection from '../components/contact-section.astro';
 import ExperienceSection from '../components/experience-section.astro';
 import HeroSection from '../components/hero-section.astro';
 import Layout from '../layouts/layout.astro';
 import ProjectsSection from '../components/projects-section.astro';
 import SiteHeader from '../components/site-header.astro';
-
-import { sections } from '../lib/site';
 ---
 
 <Layout>
@@ -18,13 +16,7 @@ import { sections } from '../lib/site';
 		<AboutSection />
 		<ProjectsSection />
 		<ExperienceSection />
-		{sections.map(
-			(section) =>
-				<ContentSection
-					id={section.id}
-					sectionKey={section.key}
-				/>
-		)}
+		<ContactSection />
 	</main>
 	<ClientPreferences />
 </Layout>

@@ -65,7 +65,11 @@
 	"experience.timeline.data.description": "Aprofundamento em inteligência artificial e análise de dados para ampliar decisões técnicas com automação e raciocínio analítico.",
 	"experience.timeline.microsoft.period": "Comunidade técnica",
 	"experience.timeline.microsoft.description": "Participação no programa Microsoft Learn Student Ambassador, fortalecendo comunicação, comunidade e aprendizagem contínua.",
-	"sections.contact.eyebrow": "Contato",
-	"sections.contact.title": "Vamos conversar",
-	"sections.contact.text": "Espaço reservado para email, redes e chamadas para contato."
+	"contact.eyebrow": "Contato",
+	"contact.title": "Vamos construir algo sólido.",
+	"contact.text": "Use os canais abaixo para falar sobre arquitetura de software, consultoria técnica, projetos ou oportunidades profissionais.",
+	"contact.gmail": "Gmail",
+	"contact.outlook": "Outlook",
+	"contact.linkedin": "LinkedIn",
+	"contact.github": "GitHub"
 }

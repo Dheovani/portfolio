@@ -65,7 +65,11 @@
 	"experience.timeline.data.description": "Further study in artificial intelligence and data analysis to broaden technical decisions with automation and analytical reasoning.",
 	"experience.timeline.microsoft.period": "Technical community",
 	"experience.timeline.microsoft.description": "Participation in the Microsoft Learn Student Ambassador program, strengthening communication, community, and continuous learning.",
-	"sections.contact.eyebrow": "Contact",
-	"sections.contact.title": "Let us talk",
-	"sections.contact.text": "Reserved space for email, social links, and contact prompts."
+	"contact.eyebrow": "Contact",
+	"contact.title": "Let us build something solid.",
+	"contact.text": "Use the channels below to talk about software architecture, technical consulting, projects, or professional opportunities.",
+	"contact.gmail": "Gmail",
+	"contact.outlook": "Outlook",
+	"contact.linkedin": "LinkedIn",
+	"contact.github": "GitHub"
 }

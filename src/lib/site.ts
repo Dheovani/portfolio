@@ -19,8 +19,4 @@ export const navItems = [
 	{ href: '#contato', key: 'nav.contact' },
 ] as const;
 
-export const sections = [
-	{ id: 'contato', key: 'contact' },
-] as const;
-
 export const t = (key: MessageKey, lang: Language = defaultLang) => messages[lang][key];

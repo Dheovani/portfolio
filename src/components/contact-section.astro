@@ -1,0 +1,78 @@
+---
+import { t } from '../lib/site';
+
+const contacts = [
+	{
+		label: 'Gmail',
+		value: 'ag.dhoxdc@gmail.com',
+		href: 'mailto:ag.dhoxdc@gmail.com',
+		key: 'contact.gmail',
+	},
+	{
+		label: 'Outlook',
+		value: 'dheovani_xavier@outlook.com',
+		href: 'mailto:dheovani_xavier@outlook.com',
+		key: 'contact.outlook',
+	},
+	{
+		label: 'LinkedIn',
+		value: 'dheovani-xavier-da-cruz',
+		href: 'https://www.linkedin.com/in/dheovani-xavier-da-cruz/',
+		key: 'contact.linkedin',
+	},
+	{
+		label: 'GitHub',
+		value: 'github.com/Dheovani',
+		href: 'https://github.com/Dheovani',
+		key: 'contact.github',
+	},
+] as const;
+---
+
+<section
+	class="scroll-mt-20 border-t border-[var(--line)] py-[clamp(4rem,9vw,7rem)]"
+	id="contato"
+	aria-labelledby="contact-title"
+>
+	<div class="grid grid-cols-[minmax(0,0.75fr)_minmax(0,1fr)] gap-[clamp(1.5rem,4vw,4rem)] max-[820px]:grid-cols-1">
+		<div>
+			<p class="mb-3.5 text-xs font-extrabold uppercase text-[var(--accent)]" data-i18n="contact.eyebrow">
+				{t('contact.eyebrow')}
+			</p>
+			<h2 class="text-[clamp(2rem,4vw,3.4rem)] leading-none" id="contact-title" data-i18n="contact.title">
+				{t('contact.title')}
+			</h2>
+		</div>
+		<p class="content-end leading-7 text-[var(--muted)]" data-i18n="contact.text">{t('contact.text')}</p>
+	</div>
+
+	<div class="mt-8 grid grid-cols-2 gap-4 max-[820px]:grid-cols-1">
+		{
+			contacts.map((contact) => (
+				<a
+					class="group rounded-lg border border-[var(--line)] bg-[var(--surface)] p-5 text-[var(--text)] transition hover:bg-[var(--surface-muted)]"
+					href={contact.href}
+					target={contact.href.startsWith('http') ? '_blank' : undefined}
+					rel={contact.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+				>
+					<div class="flex items-start justify-between gap-4">
+						<div>
+							<p class="text-xs font-extrabold uppercase text-[var(--accent)]" data-i18n={contact.key}>
+								{contact.label}
+							</p>
+							<p class="mt-3 break-words text-xl font-extrabold leading-tight">{contact.value}</p>
+						</div>
+						<svg
+							class="mt-1 size-4 shrink-0 fill-none stroke-current stroke-2 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+							viewBox="0 0 24 24"
+							aria-hidden="true"
+						>
+							<path d="M7 17 17 7"></path>
+							<path d="M7 7h10v10"></path>
+						</svg>
+					</div>
+				</a>
+			))
+		}
+	</div>
+</section>
