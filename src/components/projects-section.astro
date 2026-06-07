@@ -26,6 +26,7 @@ import { t } from '../lib/site';
 		<button
 			class="grid size-11 place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--text)] transition enabled:cursor-pointer enabled:hover:bg-[var(--surface-muted)] disabled:cursor-not-allowed disabled:opacity-35"
 			type="button"
+			data-carousel-prev="projects"
 			data-projects-prev
 			disabled
 			aria-label={t('projects.previous')}
@@ -38,6 +39,7 @@ import { t } from '../lib/site';
 
 		<div
 			class="scrollbar-none hidden bg-transparent snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth"
+			data-carousel-track="projects"
 			data-projects-track
 			aria-label={t('projects.carousel')}
 			data-i18n-attr="aria-label:projects.carousel"
@@ -47,6 +49,7 @@ import { t } from '../lib/site';
 		<button
 			class="grid size-11 place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--text)] transition enabled:cursor-pointer enabled:hover:bg-[var(--surface-muted)] disabled:cursor-not-allowed disabled:opacity-35"
 			type="button"
+			data-carousel-next="projects"
 			data-projects-next
 			disabled
 			aria-label={t('projects.next')}

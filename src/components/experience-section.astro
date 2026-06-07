@@ -1,0 +1,98 @@
+---
+import { certificates } from '../lib/certificates';
+import type { MessageKey } from '../lib/site';
+import { t } from '../lib/site';
+---
+
+<section
+	class="scroll-mt-20 border-t border-[var(--line)] py-[clamp(4rem,9vw,7rem)]"
+	id="experiencia"
+	aria-labelledby="experience-title"
+>
+	<div class="grid grid-cols-[minmax(0,0.75fr)_minmax(0,1fr)] gap-[clamp(1.5rem,4vw,4rem)] max-[820px]:grid-cols-1">
+		<div>
+			<p class="mb-3.5 text-xs font-extrabold uppercase text-[var(--accent)]" data-i18n="experience.eyebrow">
+				{t('experience.eyebrow')}
+			</p>
+			<h2 class="text-[clamp(2rem,4vw,3.4rem)] leading-none" id="experience-title" data-i18n="experience.title">
+				{t('experience.title')}
+			</h2>
+		</div>
+		<p class="leading-7 text-[var(--muted)]" data-i18n="experience.text">{t('experience.text')}</p>
+	</div>
+
+	<div class="mt-8 grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 max-[640px]:gap-2">
+		<button
+			class="grid size-11 place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--text)] transition enabled:cursor-pointer enabled:hover:bg-[var(--surface-muted)] disabled:cursor-not-allowed disabled:opacity-35"
+			type="button"
+			data-carousel-prev="certificates"
+			disabled
+			aria-label={t('experience.previous')}
+			data-i18n-attr="aria-label:experience.previous"
+		>
+			<svg class="size-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24" aria-hidden="true">
+				<path d="m15 18-6-6 6-6"></path>
+			</svg>
+		</button>
+
+		<div
+			class="scrollbar-none flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth"
+			data-carousel-track="certificates"
+			aria-label={t('experience.carousel')}
+			data-i18n-attr="aria-label:experience.carousel"
+		>
+			{
+				certificates.map((certificate) => (
+					<article class="flex w-[min(86vw,28rem)] shrink-0 snap-start flex-col overflow-hidden rounded-lg border border-[var(--line)] bg-[var(--surface)]">
+						<a href={certificate.pdf} target="_blank" rel="noopener noreferrer" aria-label={t('experience.openCertificate')}>
+							<img
+								class="block aspect-[16/10] w-full bg-[var(--surface-muted)] object-cover object-top"
+								src={certificate.preview.src}
+								alt={t(certificate.titleKey as MessageKey)}
+								width={certificate.preview.width}
+								height={certificate.preview.height}
+								loading="lazy"
+							/>
+						</a>
+						<div class="flex flex-1 flex-col p-5">
+							<p class="text-xs font-extrabold uppercase text-[var(--accent)]" data-i18n={certificate.metaKey}>
+								{t(certificate.metaKey as MessageKey)}
+							</p>
+							<h3 class="mt-2 text-xl font-extrabold leading-tight text-[var(--text)]" data-i18n={certificate.titleKey}>
+								{t(certificate.titleKey as MessageKey)}
+							</h3>
+							<p class="mt-4 flex-1 leading-7 text-[var(--muted)]" data-i18n={certificate.descriptionKey}>
+								{t(certificate.descriptionKey as MessageKey)}
+							</p>
+							<a
+								class="mt-5 inline-flex items-center gap-3 rounded-full border border-[var(--line)] px-4 py-3 font-extrabold text-[var(--text)] transition hover:bg-[var(--surface-muted)]"
+								href={certificate.pdf}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<span data-i18n="experience.openCertificate">{t('experience.openCertificate')}</span>
+								<svg class="size-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24" aria-hidden="true">
+									<path d="M7 17 17 7"></path>
+									<path d="M7 7h10v10"></path>
+								</svg>
+							</a>
+						</div>
+					</article>
+				))
+			}
+		</div>
+
+		<button
+			class="grid size-11 place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--text)] transition enabled:cursor-pointer enabled:hover:bg-[var(--surface-muted)] disabled:cursor-not-allowed disabled:opacity-35"
+			type="button"
+			data-carousel-next="certificates"
+			disabled
+			aria-label={t('experience.next')}
+			data-i18n-attr="aria-label:experience.next"
+		>
+			<svg class="size-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24" aria-hidden="true">
+				<path d="m9 18 6-6-6-6"></path>
+			</svg>
+		</button>
+	</div>
+</section>

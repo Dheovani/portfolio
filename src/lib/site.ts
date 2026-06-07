@@ -20,7 +20,6 @@ export const navItems = [
 ] as const;
 
 export const sections = [
-	{ id: 'experiencia', key: 'experience' },
 	{ id: 'contato', key: 'contact' },
 ] as const;
 

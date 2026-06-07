@@ -11,6 +11,14 @@ import { messages } from '../lib/site';
 	const projectsStatus = document.querySelector('[data-projects-status]');
 	const projectsPreviousButton = document.querySelector('[data-projects-prev]');
 	const projectsNextButton = document.querySelector('[data-projects-next]');
+	const carousels = [...document.querySelectorAll('[data-carousel-track]')].map((track) => {
+		const id = track.getAttribute('data-carousel-track');
+		return {
+			track,
+			previousButton: document.querySelector(`[data-carousel-prev="${id}"]`),
+			nextButton: document.querySelector(`[data-carousel-next="${id}"]`),
+		};
+	});
 
 	const availableLanguages = Object.keys(translations);
 
@@ -144,7 +152,7 @@ import { messages } from '../lib/site';
 			projectsStatus.hidden = true;
 			projectsTrack.classList.remove('hidden');
 			projectsTrack.classList.add('flex');
-			updateProjectNavigation();
+			updateCarouselNavigation();
 		} catch (error) {
 			projectsStatus.textContent = dictionary['projects.error'];
 			console.error(error);
@@ -170,27 +178,32 @@ import { messages } from '../lib/site';
 		loadProjects(nextLang);
 	});
 
-	function scrollProjects(direction) {
-		if (!projectsTrack) return;
-		const firstCard = projectsTrack.querySelector('article');
+	function scrollCarousel(track, direction) {
+		if (!track) return;
+		const firstCard = track.querySelector('article');
 		const cardWidth = firstCard?.getBoundingClientRect().width ?? 320;
-		projectsTrack.scrollBy({
+		track.scrollBy({
 			left: direction * (cardWidth + 16),
 			behavior: 'smooth',
 		});
 	}
 
-	function updateProjectNavigation() {
-		if (!projectsTrack || !projectsPreviousButton || !projectsNextButton) return;
-		const maxScroll = projectsTrack.scrollWidth - projectsTrack.clientWidth;
-		const currentScroll = projectsTrack.scrollLeft;
+	function updateCarouselNavigation() {
+		carousels.forEach(({ track, previousButton, nextButton }) => {
+			if (!track || !previousButton || !nextButton) return;
+			const maxScroll = track.scrollWidth - track.clientWidth;
+			const currentScroll = track.scrollLeft;
 
-		projectsPreviousButton.disabled = currentScroll <= 1;
-		projectsNextButton.disabled = currentScroll >= maxScroll - 1;
+			previousButton.disabled = currentScroll <= 1;
+			nextButton.disabled = currentScroll >= maxScroll - 1;
+		});
 	}
 
-	projectsPreviousButton?.addEventListener('click', () => scrollProjects(-1));
-	projectsNextButton?.addEventListener('click', () => scrollProjects(1));
-	projectsTrack?.addEventListener('scroll', updateProjectNavigation, { passive: true });
-	window.addEventListener('resize', updateProjectNavigation);
+	carousels.forEach(({ track, previousButton, nextButton }) => {
+		previousButton?.addEventListener('click', () => scrollCarousel(track, -1));
+		nextButton?.addEventListener('click', () => scrollCarousel(track, 1));
+		track?.addEventListener('scroll', updateCarouselNavigation, { passive: true });
+	});
+	window.addEventListener('resize', updateCarouselNavigation);
+	updateCarouselNavigation();
 </script>
