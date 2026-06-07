@@ -3,25 +3,42 @@ import type { MessageKey } from '../lib/site';
 import { navItems, t } from '../lib/site';
 ---
 
-<header class="site-header">
-	<a class="brand" href="#inicio" aria-label={t('nav.home')} data-i18n-attr="aria-label:nav.home">
-		<span class="brand-mark" aria-hidden="true">D</span>
+<header
+	class="sticky top-0 z-10 grid grid-cols-[auto_1fr_auto] items-center gap-4 border-b border-[var(--line)] bg-[color-mix(in_srgb,var(--bg)_88%,transparent)] px-[clamp(1rem,4vw,3rem)] py-3.5 backdrop-blur-[18px] max-[820px]:grid-cols-[1fr_auto]"
+>
+	<a
+		class="flex items-center gap-2.5 font-extrabold text-[var(--text)] no-underline"
+		href="#inicio"
+		aria-label={t('nav.home')}
+		data-i18n-attr="aria-label:nav.home"
+	>
+		<span
+			class="grid aspect-square w-9 place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--accent)]"
+			aria-hidden="true">D</span
+		>
 		<span data-i18n="brand.name">{t('brand.name')}</span>
 	</a>
 
-	<nav class="nav-links" aria-label="Menu principal">
+	<nav
+		class="flex items-center justify-center gap-[clamp(0.35rem,1.5vw,1rem)] overflow-x-auto text-[0.94rem] text-[var(--muted)] max-[820px]:order-3 max-[820px]:col-span-full max-[820px]:justify-start max-[820px]:pb-0.5"
+		aria-label="Menu principal"
+	>
 		{
 			navItems.map((item) => (
-				<a href={item.href} data-i18n={item.key}>
+				<a
+					class="rounded-full px-2.5 py-2 no-underline outline-none hover:bg-[var(--surface-muted)] hover:text-[var(--text)] focus-visible:bg-[var(--surface-muted)] focus-visible:text-[var(--text)]"
+					href={item.href}
+					data-i18n={item.key}
+				>
 					{t(item.key as MessageKey)}
 				</a>
 			))
 		}
 	</nav>
 
-	<div class="header-actions" aria-label="Preferencias">
+	<div class="flex items-center justify-end gap-2" aria-label="Preferencias">
 		<button
-			class="theme-switch"
+			class="group/theme relative inline-flex h-8 w-16 shrink-0 cursor-pointer items-center rounded-full border border-[var(--line)] bg-[var(--surface-muted)] p-0.5 text-[var(--text)] shadow-sm outline-none transition-[background,border-color,box-shadow] duration-200 focus-visible:border-[var(--focus)] focus-visible:shadow-[0_0_0_3px_color-mix(in_srgb,var(--focus)_32%,transparent)]"
 			type="button"
 			role="switch"
 			aria-checked="false"
@@ -29,8 +46,11 @@ import { navItems, t } from '../lib/site';
 			data-theme-toggle
 			data-state="unchecked"
 		>
-			<span class="theme-switch-icon theme-switch-icon-sun" aria-hidden="true">
-				<svg viewBox="0 0 24 24" focusable="false">
+			<span
+				class="pointer-events-none absolute inset-y-0 left-2 flex items-center opacity-40 transition-opacity duration-200 group-data-[state=unchecked]/theme:opacity-100"
+				aria-hidden="true"
+			>
+				<svg class="size-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24" focusable="false">
 					<circle cx="12" cy="12" r="4"></circle>
 					<path d="M12 2v2"></path>
 					<path d="M12 20v2"></path>
@@ -42,13 +62,24 @@ import { navItems, t } from '../lib/site';
 					<path d="m19.07 4.93-1.41 1.41"></path>
 				</svg>
 			</span>
-			<span class="theme-switch-icon theme-switch-icon-moon" aria-hidden="true">
-				<svg viewBox="0 0 24 24" focusable="false">
+			<span
+				class="pointer-events-none absolute inset-y-0 right-2 flex items-center opacity-40 transition-opacity duration-200 group-data-[state=checked]/theme:opacity-100"
+				aria-hidden="true"
+			>
+				<svg class="size-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24" focusable="false">
 					<path d="M20.99 12.54a8.7 8.7 0 0 1-9.53-9.53 9 9 0 1 0 9.53 9.53Z"></path>
 				</svg>
 			</span>
-			<span class="theme-switch-thumb" aria-hidden="true"></span>
+			<span
+				class="pointer-events-none relative z-10 block size-6 rounded-full border border-[var(--line)] bg-[var(--bg)] shadow-[0_1px_5px_color-mix(in_srgb,var(--text)_20%,transparent)] transition-transform duration-200 group-data-[state=checked]/theme:translate-x-8"
+				aria-hidden="true"
+			></span>
 		</button>
-		<button class="lang-button" type="button" data-lang-toggle aria-label="Change language">EN</button>
+		<button
+			class="grid h-9 min-w-9 cursor-pointer place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-3 text-xs font-extrabold text-[var(--text)]"
+			type="button"
+			data-lang-toggle
+			aria-label="Change language">EN</button
+		>
 	</div>
 </header>

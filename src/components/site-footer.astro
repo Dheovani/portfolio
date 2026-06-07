@@ -2,10 +2,17 @@
 import { t } from '../lib/site';
 ---
 
-<footer class="site-footer">
-	<p>
+<footer
+	class="mx-auto w-[min(1120px,calc(100%_-_2rem))] border-t border-[var(--line)] py-8 pb-10 text-sm text-[var(--muted)]"
+>
+	<p class="flex flex-wrap items-center justify-end gap-1 max-[820px]:justify-start">
 		<span data-i18n="footer.faviconCredit">{t('footer.faviconCredit')}</span>
-		<a href="https://www.flaticon.com/authors/muhamad-ulum" rel="noopener noreferrer" target="_blank">
+		<a
+			class="font-extrabold text-[var(--accent)] underline underline-offset-2"
+			href="https://www.flaticon.com/authors/muhamad-ulum"
+			rel="noopener noreferrer"
+			target="_blank"
+		>
 			Muhamad Ulum
 		</a>
 	</p>

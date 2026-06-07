@@ -2,19 +2,49 @@
 import { t } from '../lib/site';
 ---
 
-<section class="hero-section" id="inicio" aria-labelledby="hero-title">
-	<div class="hero-copy">
-		<p class="eyebrow" data-i18n="hero.eyebrow">{t('hero.eyebrow')}</p>
-		<h1 id="hero-title" data-i18n="hero.title">{t('hero.title')}</h1>
-		<p class="hero-text" data-i18n="hero.text">{t('hero.text')}</p>
-		<div class="hero-actions">
-			<a class="primary-link" href="#projetos" data-i18n="hero.primary">{t('hero.primary')}</a>
-			<a class="secondary-link" href="#contato" data-i18n="hero.secondary">{t('hero.secondary')}</a>
+<section
+	class="grid min-h-[calc(100svh-4.2rem)] grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)] items-center gap-[clamp(1.5rem,4vw,4rem)] py-[clamp(3rem,8vw,7rem)] max-[820px]:min-h-0 max-[820px]:grid-cols-1"
+	id="inicio"
+	aria-labelledby="hero-title"
+>
+	<div class="max-w-[720px]">
+		<p class="mb-3.5 text-xs font-extrabold uppercase text-[var(--accent)]" data-i18n="hero.eyebrow">
+			{t('hero.eyebrow')}
+		</p>
+		<h1
+			class="max-w-[12ch] text-[clamp(3.25rem,8vw,6.9rem)] leading-[0.9] max-[820px]:max-w-[11ch] max-[820px]:text-[clamp(3rem,17vw,5.5rem)]"
+			id="hero-title"
+			data-i18n="hero.title"
+		>
+			{t('hero.title')}
+		</h1>
+		<p
+			class="mt-5 max-w-[620px] text-[clamp(1.05rem,2vw,1.25rem)] leading-relaxed text-[var(--muted)]"
+			data-i18n="hero.text"
+		>
+			{t('hero.text')}
+		</p>
+		<div class="mt-8 flex flex-wrap gap-3">
+			<a
+				class="inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--accent)] px-4 py-3 font-extrabold text-[var(--accent-contrast)] no-underline"
+				href="#projetos"
+				data-i18n="hero.primary">{t('hero.primary')}</a
+			>
+			<a
+				class="inline-flex min-h-11 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 py-3 font-extrabold text-[var(--text)] no-underline"
+				href="#contato"
+				data-i18n="hero.secondary">{t('hero.secondary')}</a
+			>
 		</div>
 	</div>
 
-	<div class="profile-panel" aria-label="Resumo">
-		<span class="panel-label" data-i18n="profile.label">{t('profile.label')}</span>
-		<p data-i18n="profile.text">{t('profile.text')}</p>
+	<div
+		class="rounded-lg border border-[var(--line)] bg-[var(--surface)] p-[clamp(1.25rem,3vw,2rem)] shadow-[0_24px_70px_color-mix(in_srgb,var(--text)_10%,transparent)]"
+		aria-label="Resumo"
+	>
+		<span class="mb-3.5 block text-xs font-extrabold uppercase text-[var(--accent)]" data-i18n="profile.label">
+			{t('profile.label')}
+		</span>
+		<p class="leading-7 text-[var(--muted)]" data-i18n="profile.text">{t('profile.text')}</p>
 	</div>
 </section>
