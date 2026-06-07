@@ -1,0 +1,54 @@
+---
+import type { MessageKey } from '../lib/site';
+import { navItems, t } from '../lib/site';
+---
+
+<header class="site-header">
+	<a class="brand" href="#inicio" aria-label={t('nav.home')} data-i18n-attr="aria-label:nav.home">
+		<span class="brand-mark" aria-hidden="true">D</span>
+		<span data-i18n="brand.name">{t('brand.name')}</span>
+	</a>
+
+	<nav class="nav-links" aria-label="Menu principal">
+		{
+			navItems.map((item) => (
+				<a href={item.href} data-i18n={item.key}>
+					{t(item.key as MessageKey)}
+				</a>
+			))
+		}
+	</nav>
+
+	<div class="header-actions" aria-label="Preferencias">
+		<button
+			class="theme-switch"
+			type="button"
+			role="switch"
+			aria-checked="false"
+			aria-label="Alternar tema"
+			data-theme-toggle
+			data-state="unchecked"
+		>
+			<span class="theme-switch-icon theme-switch-icon-sun" aria-hidden="true">
+				<svg viewBox="0 0 24 24" focusable="false">
+					<circle cx="12" cy="12" r="4"></circle>
+					<path d="M12 2v2"></path>
+					<path d="M12 20v2"></path>
+					<path d="m4.93 4.93 1.41 1.41"></path>
+					<path d="m17.66 17.66 1.41 1.41"></path>
+					<path d="M2 12h2"></path>
+					<path d="M20 12h2"></path>
+					<path d="m6.34 17.66-1.41 1.41"></path>
+					<path d="m19.07 4.93-1.41 1.41"></path>
+				</svg>
+			</span>
+			<span class="theme-switch-icon theme-switch-icon-moon" aria-hidden="true">
+				<svg viewBox="0 0 24 24" focusable="false">
+					<path d="M20.99 12.54a8.7 8.7 0 0 1-9.53-9.53 9 9 0 1 0 9.53 9.53Z"></path>
+				</svg>
+			</span>
+			<span class="theme-switch-thumb" aria-hidden="true"></span>
+		</button>
+		<button class="lang-button" type="button" data-lang-toggle aria-label="Change language">EN</button>
+	</div>
+</header>

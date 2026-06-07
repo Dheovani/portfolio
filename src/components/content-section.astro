@@ -1,0 +1,22 @@
+---
+import type { MessageKey } from '../lib/site';
+import { t } from '../lib/site';
+
+interface Props {
+	id: string;
+	sectionKey: string;
+}
+
+const { id, sectionKey } = Astro.props;
+const eyebrowKey = `sections.${sectionKey}.eyebrow` as MessageKey;
+const titleKey = `sections.${sectionKey}.title` as MessageKey;
+const textKey = `sections.${sectionKey}.text` as MessageKey;
+---
+
+<section class="content-section" id={id}>
+	<div>
+		<p class="eyebrow" data-i18n={eyebrowKey}>{t(eyebrowKey)}</p>
+		<h2 data-i18n={titleKey}>{t(titleKey)}</h2>
+	</div>
+	<p data-i18n={textKey}>{t(textKey)}</p>
+</section>
