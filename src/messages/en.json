@@ -27,6 +27,7 @@
 	"about.photoAlt": "Profile photo of the portfolio author",
 	"projects.eyebrow": "Personal projects",
 	"projects.title": "Public repositories directly from GitHub.",
+	"projects.description": "The list below is loaded on each access from my GitHub profile, prioritizing my own repositories with descriptions, stars, and recent activity.",
 	"projects.previous": "View previous projects",
 	"projects.next": "View next projects",
 	"projects.carousel": "Navigable list of personal projects",

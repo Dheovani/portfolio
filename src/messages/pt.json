@@ -27,6 +27,7 @@
 	"about.photoAlt": "Foto de perfil do autor do portfolio",
 	"projects.eyebrow": "Projetos pessoais",
 	"projects.title": "Repositórios públicos direto do GitHub.",
+	"projects.description": "A lista abaixo é carregada a cada acesso a partir do meu perfil no GitHub, priorizando repositórios próprios com descrições, estrelas e atividade recente.",
 	"projects.previous": "Ver projetos anteriores",
 	"projects.next": "Ver próximos projetos",
 	"projects.carousel": "Lista navegável de projetos pessoais",
