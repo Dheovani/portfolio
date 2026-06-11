@@ -14,6 +14,7 @@ export type MessageKey = keyof typeof pt;
 export const navItems = [
 	{ href: '#inicio', key: 'nav.home' },
 	{ href: '#sobre', key: 'nav.about' },
+	{ href: '#servicos', key: 'nav.services' },
 	{ href: '#projetos', key: 'nav.projects' },
 	{ href: '#experiencia', key: 'nav.experience' },
 	{ href: '#contato', key: 'nav.contact' },

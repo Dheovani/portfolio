@@ -1,0 +1,74 @@
+---
+import aboutScreenshot from '../assets/projecta-screenshots/about.png';
+import contactScreenshot from '../assets/projecta-screenshots/contact.png';
+import homeScreenshot from '../assets/projecta-screenshots/home.png';
+import productsScreenshot from '../assets/projecta-screenshots/products.png';
+import { t } from '../lib/site';
+import PhotoStack from './photo-stack.astro';
+
+const projectaImages = [
+	{
+		src: homeScreenshot.src,
+		alt: t('services.projecta.imageHomeAlt'),
+		altKey: 'services.projecta.imageHomeAlt',
+	},
+	{
+		src: productsScreenshot.src,
+		alt: t('services.projecta.imageProductsAlt'),
+		altKey: 'services.projecta.imageProductsAlt',
+	},
+	{
+		src: aboutScreenshot.src,
+		alt: t('services.projecta.imageAboutAlt'),
+		altKey: 'services.projecta.imageAboutAlt',
+	},
+	{
+		src: contactScreenshot.src,
+		alt: t('services.projecta.imageContactAlt'),
+		altKey: 'services.projecta.imageContactAlt',
+	},
+];
+---
+
+<section
+	class="scroll-mt-20 border-t border-[var(--line)] py-[clamp(4rem,9vw,7rem)]"
+	id="servicos"
+	aria-labelledby="services-title"
+>
+	<div class="flex flex-col items-center gap-[clamp(2rem,5vw,5rem)] max-[900px]:grid-cols-1">
+		<div class="grid grid-cols-[minmax(0,0.75fr)_minmax(0,1fr)] gap-[clamp(1.5rem,4vw,4rem)] max-[820px]:grid-cols-1">
+			<div>
+				<p class="mb-3.5 text-xs font-extrabold uppercase text-[var(--accent)]" data-i18n="services.eyebrow">
+					{t('services.eyebrow')}
+				</p>
+				<h2
+					class="max-w-[13ch] text-[clamp(2.2rem,4.6vw,4rem)] leading-none"
+					id="services-title"
+					data-i18n="services.title"
+				>
+					{t('services.title')}
+				</h2>
+			</div>
+			<div class="flex flex-col items-start justify-between leading-7 text-[var(--muted)]">
+				<a
+					class="mt-7 ml-auto inline-flex min-h-11 items-center justify-center gap-3 rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 py-3 font-extrabold text-[var(--text)] no-underline transition hover:bg-[var(--surface-muted)]"
+					href="https://projecta-solucoes.com/"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<span data-i18n="services.openProject">{t('services.openProject')}</span>
+					<svg class="size-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M7 17 17 7"></path>
+						<path d="M7 7h10v10"></path>
+					</svg>
+				</a>
+
+				<p class="leading-7 text-[var(--muted)]" data-i18n="services.text">
+					{t('services.text')}
+				</p>
+			</div>
+		</div>
+
+		<PhotoStack images={projectaImages} label={t('services.carousel')} />
+	</div>
+</section>
