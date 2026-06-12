@@ -34,6 +34,7 @@ src/
   pages/            Página principal
   styles/           Tailwind e tokens globais de tema
 public/
+  CNAME
   favicon.ico
   favicon.png
   icon-light.png
@@ -45,6 +46,7 @@ public/
 
 - `hero-section.astro`: apresentação inicial.
 - `about-section.astro`: resumo profissional e foto.
+- `service-showcase-section.astro`: amostra de trabalho profissional com capturas de um site entregue.
 - `projects-section.astro`: carrossel de repositórios públicos carregados da API do GitHub.
 - `experience-section.astro`: timeline de formação e carrossel de certificados.
 - `contact-section.astro`: Gmail, Outlook, LinkedIn e GitHub.
@@ -102,16 +104,21 @@ A saída de produção é gerada em `dist/`.
 O projeto está configurado para publicação em:
 
 ```text
-https://dheovani.github.io/portfolio/
+https://dheovani-xavier.dev/
 ```
 
 A configuração fica em `astro.config.mjs`:
 
 ```js
 export default defineConfig({
-	site: 'https://dheovani.github.io',
-	base: '/portfolio',
+	site: 'https://dheovani-xavier.dev',
 });
+```
+
+O domínio customizado é preservado pelo arquivo:
+
+```text
+public/CNAME
 ```
 
 O deploy automático é feito pelo workflow:
@@ -122,9 +129,7 @@ O deploy automático é feito pelo workflow:
 
 Para publicar:
 
-1. Faça push para a branch `main`.
+1. Faça push para a branch `master`.
 2. No GitHub, acesse `Settings > Pages`.
 3. Em `Build and deployment`, selecione `GitHub Actions`.
 4. Aguarde o workflow `Deploy to GitHub Pages` finalizar.
-
-Com `base: '/portfolio'`, o site local em modo de desenvolvimento também usa o prefixo `/portfolio`.
