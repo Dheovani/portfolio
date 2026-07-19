@@ -46,7 +46,6 @@ public/
 
 - `hero-section.astro`: apresentação inicial.
 - `about-section.astro`: resumo profissional e foto.
-- `service-showcase-section.astro`: amostra de trabalho profissional com capturas de um site entregue.
 - `projects-section.astro`: carrossel de repositórios públicos carregados da API do GitHub.
 - `experience-section.astro`: timeline de formação e carrossel de certificados.
 - `contact-section.astro`: Gmail, Outlook, LinkedIn e GitHub.
