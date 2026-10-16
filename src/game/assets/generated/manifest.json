@@ -1,0 +1,174 @@
+{
+  "room": {
+    "file": "room.png",
+    "anchor": [
+      200,
+      84
+    ],
+    "width": 400,
+    "height": 286
+  },
+  "roomDay": {
+    "file": "room-day.png"
+  },
+  "furniture": {
+    "bed": {
+      "file": "bed.png",
+      "anchor": [
+        34,
+        32
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    },
+    "nightstand": {
+      "file": "nightstand.png",
+      "anchor": [
+        18,
+        36
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    "bookshelf": {
+      "file": "bookshelf.png",
+      "anchor": [
+        34,
+        62
+      ],
+      "footprint": [
+        1,
+        2
+      ]
+    },
+    "desk": {
+      "file": "desk.png",
+      "anchor": [
+        18,
+        48
+      ],
+      "footprint": [
+        3,
+        1
+      ]
+    },
+    "chair": {
+      "file": "chair.png",
+      "anchor": [
+        18,
+        36
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    "pcTower": {
+      "file": "pcTower.png",
+      "anchor": [
+        18,
+        40
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    "plantTall": {
+      "file": "plantTall.png",
+      "anchor": [
+        18,
+        60
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    "plantBushy": {
+      "file": "plantBushy.png",
+      "anchor": [
+        18,
+        44
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    "workbench": {
+      "file": "workbench.png",
+      "anchor": [
+        34,
+        42
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    },
+    "terminal": {
+      "file": "terminal.png",
+      "anchor": [
+        18,
+        52
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    }
+  },
+  "avatar": {
+    "file": "avatar.png",
+    "width": 18,
+    "height": 40,
+    "columns": 6,
+    "rows": 2,
+    "anchor": [
+      9,
+      39
+    ]
+  },
+  "arm": {
+    "file": "robot-arm.png",
+    "width": 44,
+    "height": 46,
+    "frames": 8,
+    "anchor": [
+      16,
+      42
+    ]
+  },
+  "fx": {
+    "marker": {
+      "file": "marker.png",
+      "width": 9,
+      "height": 9
+    },
+    "tile-hover": {
+      "file": "tile-hover.png",
+      "width": 32,
+      "height": 16
+    },
+    "tile-target": {
+      "file": "tile-target.png",
+      "width": 32,
+      "height": 16
+    },
+    "shadow": {
+      "file": "shadow.png",
+      "width": 18,
+      "height": 8
+    },
+    "spark": {
+      "file": "spark.png",
+      "width": 9,
+      "height": 9
+    }
+  }
+}

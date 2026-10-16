@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "title": "Dheovani Xavier · Senior software engineer",
+    "description": "Interactive portfolio of Dheovani Xavier, senior software engineer: explore the room to discover experience, projects, education and contact."
+  },
+  "hud": {
+    "language": "Language",
+    "timeOfDay": "Switch between day and night",
+    "day": "Day",
+    "night": "Night",
+    "help": "Help and controls",
+    "close": "Close",
+    "loading": "Setting up the room…",
+    "error": "The room could not be drawn in this browser. Open the sections below:",
+    "hintPointer": "Click the floor to walk · click objects to explore",
+    "hintTouch": "Tap the floor to walk · tap objects to explore"
+  },
+  "help": {
+    "title": "How to explore",
+    "intro": "Each object in the room holds a part of my portfolio.",
+    "pointer": "Click or tap the floor to walk; click an object and the character walks over to it.",
+    "arrows": "Arrow keys or WASD move the character; Enter uses the object next to it.",
+    "tab": "Tab cycles through the interactive objects; Enter opens the selected one.",
+    "escape": "Esc closes the open panel."
+  },
+  "room": {
+    "label": "Interactive portfolio room. Use Tab to pick an object.",
+    "open": "Open {{section}} ({{object}})"
+  },
+  "objects": {
+    "about": "Bed",
+    "experience": "Computer desk",
+    "education": "Bookshelf",
+    "projects": "Engineering workbench",
+    "contact": "Comms terminal"
+  },
+  "sections": {
+    "about": "About me",
+    "experience": "Professional experience",
+    "education": "Education",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "panel": {
+    "pending": "to be filled",
+    "highlights": "Focus areas",
+    "interests": "Interests",
+    "responsibilities": "Responsibilities",
+    "achievements": "Key achievements",
+    "technologies": "Technologies",
+    "company": "Company",
+    "period": "Period",
+    "location": "Location",
+    "institution": "Institution",
+    "certificate": "View certificate",
+    "repository": "Repository",
+    "allProjects": "All repositories on GitHub",
+    "featured": "Featured",
+    "status": {
+      "active": "Active",
+      "maintenance": "Maintenance"
+    },
+    "kind": {
+      "degree": "Bachelor's degree",
+      "postgraduate": "Graduate certificate",
+      "certification": "Certification"
+    },
+    "contactIntro": "Use the channels below to talk about projects, technical consulting, or professional opportunities."
+  }
+}

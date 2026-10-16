@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "title": "Dheovani Xavier · Engenheiro de software sênior",
+    "description": "Portfólio interativo de Dheovani Xavier, engenheiro de software sênior: explore a sala para conhecer experiência, projetos, formação e contato."
+  },
+  "hud": {
+    "language": "Idioma",
+    "timeOfDay": "Alternar entre dia e noite",
+    "day": "Dia",
+    "night": "Noite",
+    "help": "Ajuda e controles",
+    "close": "Fechar",
+    "loading": "Preparando a sala…",
+    "error": "Não foi possível desenhar a sala neste navegador. Acesse as seções abaixo:",
+    "hintPointer": "Clique no chão para andar · clique nos objetos para explorar",
+    "hintTouch": "Toque no chão para andar · toque nos objetos para explorar"
+  },
+  "help": {
+    "title": "Como explorar",
+    "intro": "Cada objeto da sala guarda uma parte do meu portfólio.",
+    "pointer": "Clique ou toque no chão para caminhar; clique em um objeto para que o personagem vá até ele.",
+    "arrows": "Setas ou WASD movem o personagem; Enter usa o objeto ao lado.",
+    "tab": "Tab percorre os objetos interativos; Enter abre o selecionado.",
+    "escape": "Esc fecha o painel aberto."
+  },
+  "room": {
+    "label": "Sala interativa do portfólio. Use Tab para escolher um objeto.",
+    "open": "Abrir {{section}} ({{object}})"
+  },
+  "objects": {
+    "about": "Cama",
+    "experience": "Mesa do computador",
+    "education": "Estante de livros",
+    "projects": "Bancada de engenharia",
+    "contact": "Terminal de comunicação"
+  },
+  "sections": {
+    "about": "Sobre mim",
+    "experience": "Experiência profissional",
+    "education": "Formação acadêmica",
+    "projects": "Projetos",
+    "contact": "Contato"
+  },
+  "panel": {
+    "pending": "a preencher",
+    "highlights": "Foco de atuação",
+    "interests": "Interesses",
+    "responsibilities": "Responsabilidades",
+    "achievements": "Principais realizações",
+    "technologies": "Tecnologias",
+    "company": "Empresa",
+    "period": "Período",
+    "location": "Local",
+    "institution": "Instituição",
+    "certificate": "Ver certificado",
+    "repository": "Repositório",
+    "allProjects": "Todos os repositórios no GitHub",
+    "featured": "Destaque",
+    "status": {
+      "active": "Ativo",
+      "maintenance": "Manutenção"
+    },
+    "kind": {
+      "degree": "Bacharelado",
+      "postgraduate": "Pós-graduação lato sensu",
+      "certification": "Certificação"
+    },
+    "contactIntro": "Use os canais abaixo para falar sobre projetos, consultoria técnica ou oportunidades profissionais."
+  }
+}

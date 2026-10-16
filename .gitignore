@@ -1,8 +1,8 @@
 # build output
 dist/
 
-# generated types
-.astro/
+# typescript build info
+*.tsbuildinfo
 
 # dependencies
 node_modules/

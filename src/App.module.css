@@ -1,0 +1,21 @@
+.app {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.controls {
+  position: absolute;
+  top: var(--gutter);
+  right: var(--gutter);
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  z-index: 20;
+}
+
+@media (max-width: 480px) {
+  .controls {
+    gap: 6px;
+  }
+}

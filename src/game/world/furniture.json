@@ -1,0 +1,12 @@
+[
+  { "id": "bed", "sprite": "bed", "x": 0, "y": 1, "w": 3, "h": 2 },
+  { "id": "nightstand", "sprite": "nightstand", "x": 0, "y": 3, "w": 1, "h": 1 },
+  { "id": "bookshelf", "sprite": "bookshelf", "x": 0, "y": 8, "w": 1, "h": 2 },
+  { "id": "plantLeft", "sprite": "plantTall", "x": 0, "y": 11, "w": 1, "h": 1 },
+  { "id": "desk", "sprite": "desk", "x": 6, "y": 0, "w": 3, "h": 1 },
+  { "id": "chair", "sprite": "chair", "x": 7, "y": 1, "w": 1, "h": 1 },
+  { "id": "pcTower", "sprite": "pcTower", "x": 9, "y": 0, "w": 1, "h": 1 },
+  { "id": "plantRight", "sprite": "plantBushy", "x": 11, "y": 0, "w": 1, "h": 1 },
+  { "id": "workbench", "sprite": "workbench", "x": 5, "y": 5, "w": 3, "h": 2 },
+  { "id": "terminal", "sprite": "terminal", "x": 10, "y": 7, "w": 1, "h": 1 }
+]

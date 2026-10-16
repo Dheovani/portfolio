@@ -1,0 +1,30 @@
+.hint {
+  position: fixed;
+  left: 50%;
+  bottom: max(var(--gutter), env(safe-area-inset-bottom));
+  max-width: calc(100% - var(--gutter) * 2);
+  margin: 0;
+  padding: 6px 12px;
+  transform: translateX(-50%);
+  background: rgb(22 25 37 / 0.85);
+  border: 2px solid var(--edge);
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--ink-dim);
+  text-align: center;
+  pointer-events: none;
+  animation: fade 600ms 800ms steps(4) both;
+}
+
+@media (max-width: 600px) {
+  .hint {
+    width: max-content;
+    font-size: 13px;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}

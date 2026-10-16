@@ -1,0 +1,9 @@
+{
+  "cols": 12,
+  "rows": 12,
+  "tileWidth": 32,
+  "tileHeight": 16,
+  "wallHeight": 76,
+  "wallThickness": 0.375,
+  "floorThickness": 8
+}

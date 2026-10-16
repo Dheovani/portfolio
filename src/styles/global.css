@@ -1,103 +1,94 @@
-@import "tailwindcss";
-
 :root {
-	color-scheme: light;
-	--bg: #f6f3ed;
-	--surface: #fffaf2;
-	--surface-muted: #ede5da;
-	--text: #151719;
-	--muted: #666d72;
-	--line: #d8d1c6;
-	--accent: #256f6d;
-	--accent-contrast: #ffffff;
-	--focus: #c86d3c;
-	font-family:
-		Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-	scroll-behavior: smooth;
+  color-scheme: dark;
+  --bg: #0b0c12;
+  --bg-glow: #161827;
+  --ink: #e8eaf2;
+  --ink-dim: #a9aec0;
+  --ink-faint: #6f758c;
+  --panel: #161925;
+  --panel-raised: #1d2131;
+  --edge: #3a3f57;
+  --edge-light: #565c7a;
+  --outline: #08090e;
+  --cyan: #62e3ec;
+  --cyan-dim: #2f8e9c;
+  --warm: #ffc77d;
+  --pending: #e7b65c;
+
+  --font-pixel: 'Tiny5', ui-monospace, 'Cascadia Mono', monospace;
+  --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+
+  --gutter: 16px;
+  /* Panel bottom-sheet height on phones (mirrored in useRoomScale). */
+  --sheet-height: 58dvh;
+  --step: 4px;
 }
 
-:root[data-theme='dark'] {
-	color-scheme: dark;
-	--bg: #111315;
-	--surface: #191d20;
-	--surface-muted: #232a2e;
-	--text: #f3efe7;
-	--muted: #aab1b5;
-	--line: #30383d;
-	--accent: #7ac7b8;
-	--accent-contrast: #111315;
-	--focus: #e2a86e;
+:root[data-time='day'] {
+  --bg: #141824;
+  --bg-glow: #2f3a52;
 }
 
-@layer base {
-	* {
-		box-sizing: border-box;
-	}
-
-	body {
-		margin: 0;
-		background: var(--bg);
-		color: var(--text);
-	}
-
-	svg {
-		stroke-linecap: round;
-		stroke-linejoin: round;
-	}
-
-	.scrollbar-none {
-		scrollbar-width: none;
-	}
-
-	.scrollbar-none::-webkit-scrollbar {
-		display: none;
-	}
+body {
+  transition: background-color 600ms ease;
 }
 
-@layer components {
-	.project-card {
-		@apply flex min-h-72 w-[min(86vw,22rem)] shrink-0 snap-start flex-col rounded-lg border border-[var(--line)] bg-[var(--surface)] p-5;
-	}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-	.project-card-header {
-		@apply grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4;
-	}
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
 
-	.project-card-language {
-		@apply text-xs font-extrabold uppercase text-[var(--accent)];
-	}
+body {
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 52%, var(--bg-glow) 0%, transparent 70%),
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
 
-	.project-card-title {
-		@apply mt-2 max-w-full text-[clamp(1.35rem,5vw,1.5rem)] font-extrabold leading-tight text-[var(--text)];
-		overflow-wrap: anywhere;
-	}
+button {
+  font: inherit;
+  color: inherit;
+}
 
-	.project-card-stats {
-		@apply flex shrink-0 items-center gap-2 text-sm text-[var(--muted)];
-	}
+a {
+  color: var(--cyan);
+}
 
-	.project-card-stats span {
-		@apply inline-flex items-center gap-1;
-	}
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
 
-	.project-card-stats svg,
-	.project-card-link svg {
-		@apply size-4 fill-none stroke-current stroke-2;
-	}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
 
-	.project-card-description {
-		@apply mt-5 flex-1 leading-7 text-[var(--muted)];
-	}
-
-	.project-card-tags {
-		@apply mt-5 flex flex-wrap gap-2 p-0;
-	}
-
-	.project-card-tag {
-		@apply list-none rounded-full bg-[var(--surface-muted)] px-3 py-1 text-xs font-bold text-[var(--text)];
-	}
-
-	.project-card-link {
-		@apply mt-6 inline-flex items-center justify-between gap-3 rounded-full border border-[var(--line)] px-4 py-3 font-extrabold text-[var(--text)] transition hover:bg-[var(--surface-muted)];
-	}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

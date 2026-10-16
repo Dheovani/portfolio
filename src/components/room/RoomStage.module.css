@@ -1,0 +1,75 @@
+.viewport {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow: auto hidden;
+  scrollbar-width: none;
+  transition: padding-bottom 250ms ease-out;
+}
+
+/* On phones the room slides up so it stays visible above the panel sheet. */
+@media (max-width: 600px) {
+  .viewport[data-panel-open='true'] {
+    padding-bottom: var(--sheet-height);
+  }
+}
+
+.viewport::-webkit-scrollbar {
+  display: none;
+}
+
+/* Auto margins centre the stage and still allow panning when it is wider than the screen. */
+.stage {
+  position: relative;
+  flex-shrink: 0;
+  margin: auto;
+}
+
+.canvasHost,
+.canvasHost canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.canvasHost canvas {
+  image-rendering: pixelated;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.status {
+  position: absolute;
+  inset: auto 0 45%;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-pixel);
+  color: var(--ink-dim);
+}
+
+.fallback {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 12px;
+  padding: var(--gutter);
+  text-align: center;
+  color: var(--ink-dim);
+}
+
+.fallback ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fallback button {
+  padding: 8px 14px;
+  border: 2px solid var(--edge);
+  background: var(--panel);
+  font-family: var(--font-pixel);
+  cursor: pointer;
+}
