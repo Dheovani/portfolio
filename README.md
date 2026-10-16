@@ -8,7 +8,7 @@ Portfólio interativo em pixel art isométrica. O visitante controla um personag
 | Mesa com computador | Experiência profissional |
 | Estante de livros | Formação acadêmica |
 | Bancada de engenharia (braço robótico) | Projetos |
-| Terminal de comunicação | Contato |
+| Caixa de correio | Contato |
 
 Idiomas: português (pt-BR), inglês e espanhol.
 
@@ -43,6 +43,17 @@ npm run sprites    # regenera os sprites em src/game/assets/generated
 - Tab: percorre os objetos interativos (rótulo aparece sobre o objeto); Enter abre.
 - Esc: fecha o painel.
 - Botão sol/lua (canto superior direito): alterna o quarto entre dia e noite. A escolha fica salva no navegador; na primeira visita segue o horário local (dia das 7h às 19h).
+
+## Rádio lo-fi
+
+Widget no canto inferior esquerdo com as 10 faixas do álbum **Just Relax**, de **Purrple Cat** (CC BY-SA 4.0).
+
+- Nada toca ao carregar a página; a música começa com o play e continua durante a exploração, com painéis abertos e trocas de idioma.
+- Playlist contínua: ao fim da faixa 10 volta para a 1. Volume inicial de 20%; volume e mudo ficam salvos no navegador.
+- Um único elemento `<audio>`, criado no primeiro play, com `preload="none"`: só a faixa atual é baixada.
+- Faixas que não carregam são puladas; se todas falharem, o rádio mostra "Faixa indisponível".
+- Código: `src/audio/` (`playlist.ts`, `AudioPlayer.ts`, `radio.ts`, `preferences.ts`), estado em `src/state/useRadioStore.ts`, interface em `src/components/radio/`.
+- Arquivos: `public/audio/purrple-cat/` (com `CREDITS.md`). Os créditos também aparecem no próprio widget.
 
 ## Arquitetura
 

@@ -81,14 +81,14 @@ export const INTERACTABLES: readonly Interactable[] = [
   },
   {
     section: 'contact',
-    objectId: 'terminal',
+    objectId: 'mailbox',
     approach: [
-      { x: 9, y: 7 },
+      { x: 10, y: 7 },
+      { x: 11, y: 8 },
+      { x: 11, y: 6 },
       { x: 10, y: 8 },
-      { x: 10, y: 6 },
-      { x: 11, y: 7 },
     ],
-    height: 50,
+    height: 46,
   },
 ];
 

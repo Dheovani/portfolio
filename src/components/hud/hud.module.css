@@ -203,9 +203,3 @@
 .knob[data-night='true'] {
   translate: 30px 0;
 }
-
-.pixelIcon {
-  width: 14px;
-  height: 14px;
-  fill: currentColor;
-}

@@ -67,8 +67,6 @@ export function drawRoom(config, time = 'night') {
   glow(canvas, lampFloor[0], lampFloor[1], 30, 14, C.warm, 26, 5);
   const monitor = P(7.5, 0.3, 30);
   glow(canvas, monitor[0], monitor[1], 30, 18, C.cyan, 22, 5);
-  const terminal = P(10.5, 7.8, 0);
-  glow(canvas, terminal[0], terminal[1], 22, 11, C.cyan, 22, 4);
 
   return { canvas, anchor: [ax, ay] };
 }

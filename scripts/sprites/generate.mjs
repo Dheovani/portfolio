@@ -15,7 +15,6 @@ import {
   markerSprite,
   tileCursor,
   shadowSprite,
-  sparkSprite,
 } from './actors.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -44,7 +43,7 @@ const builders = {
   plantTall: furniture.plantTall,
   plantBushy: furniture.plantBushy,
   workbench: furniture.workbench,
-  terminal: furniture.terminal,
+  mailbox: furniture.mailbox,
 };
 const built = {};
 for (const [name, build] of Object.entries(builders)) {
@@ -76,7 +75,6 @@ const fx = {
   'tile-hover': tileCursor([230, 236, 255, 120]),
   'tile-target': tileCursor(C.cyan),
   shadow: shadowSprite(),
-  spark: sparkSprite(),
 };
 for (const [name, canvas] of Object.entries(fx)) {
   write(name, canvas);

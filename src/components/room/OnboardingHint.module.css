@@ -16,6 +16,13 @@
   animation: fade 600ms 800ms steps(4) both;
 }
 
+/* Leaves the bottom-left corner to the radio dock on narrower screens. */
+@media (max-width: 900px) {
+  .hint {
+    bottom: calc(max(var(--gutter), env(safe-area-inset-bottom)) + 44px);
+  }
+}
+
 @media (max-width: 600px) {
   .hint {
     width: max-content;

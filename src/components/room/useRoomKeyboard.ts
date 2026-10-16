@@ -21,7 +21,9 @@ export function useRoomKeyboard(engine: RoomEngine | null): void {
       const { activeSection, helpOpen } = useAppStore.getState();
       if (activeSection || helpOpen || event.ctrlKey || event.metaKey || event.altKey) return;
       const target = event.target as HTMLElement | null;
-      const onControl = !!target?.closest('button, a, input, select, textarea');
+      // Form fields (e.g. the radio volume slider) keep their own arrow-key behaviour.
+      if (target?.closest('input, select, textarea')) return;
+      const onControl = !!target?.closest('button, a');
       const direction = KEY_DIRECTIONS[event.key.length === 1 ? event.key.toLowerCase() : event.key];
       if (direction) {
         event.preventDefault();

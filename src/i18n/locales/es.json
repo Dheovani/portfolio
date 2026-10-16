@@ -32,7 +32,7 @@
     "experience": "Escritorio con ordenador",
     "education": "Estantería",
     "projects": "Banco de ingeniería",
-    "contact": "Terminal de comunicación"
+    "contact": "Buzón"
   },
   "sections": {
     "about": "Sobre mí",
@@ -66,5 +66,27 @@
       "certification": "Certificación"
     },
     "contactIntro": "Usa los canales de abajo para hablar sobre proyectos, consultoría técnica u oportunidades profesionales."
+  },
+  "radio": {
+    "label": "Radio lo-fi",
+    "open": "Abrir radio",
+    "close": "Cerrar radio",
+    "play": "Reproducir",
+    "pause": "Pausar",
+    "next": "Pista siguiente",
+    "previous": "Pista anterior",
+    "mute": "Silenciar",
+    "volume": "Volumen",
+    "ready": "Listo",
+    "loading": "Cargando…",
+    "playing": "Sonando",
+    "paused": "En pausa",
+    "blocked": "Pulsa play para escuchar",
+    "error": "Pista no disponible",
+    "credits": "Créditos",
+    "artist": "Artista",
+    "album": "Álbum",
+    "license": "Licencia",
+    "unmodified": "Pistas originales del artista, audio sin modificar (solo se renombraron los archivos)."
   }
 }

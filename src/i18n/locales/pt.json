@@ -32,7 +32,7 @@
     "experience": "Mesa do computador",
     "education": "Estante de livros",
     "projects": "Bancada de engenharia",
-    "contact": "Terminal de comunicação"
+    "contact": "Caixa de correio"
   },
   "sections": {
     "about": "Sobre mim",
@@ -66,5 +66,27 @@
       "certification": "Certificação"
     },
     "contactIntro": "Use os canais abaixo para falar sobre projetos, consultoria técnica ou oportunidades profissionais."
+  },
+  "radio": {
+    "label": "Rádio lo-fi",
+    "open": "Abrir rádio",
+    "close": "Fechar rádio",
+    "play": "Tocar",
+    "pause": "Pausar",
+    "next": "Próxima faixa",
+    "previous": "Faixa anterior",
+    "mute": "Silenciar",
+    "volume": "Volume",
+    "ready": "Pronto",
+    "loading": "Carregando…",
+    "playing": "Tocando",
+    "paused": "Pausado",
+    "blocked": "Toque em play para ouvir",
+    "error": "Faixa indisponível",
+    "credits": "Créditos",
+    "artist": "Artista",
+    "album": "Álbum",
+    "license": "Licença",
+    "unmodified": "Faixas originais do artista, sem alterações no áudio (apenas os arquivos foram renomeados)."
   }
 }

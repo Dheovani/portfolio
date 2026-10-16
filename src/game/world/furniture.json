@@ -8,5 +8,5 @@
   { "id": "pcTower", "sprite": "pcTower", "x": 9, "y": 0, "w": 1, "h": 1 },
   { "id": "plantRight", "sprite": "plantBushy", "x": 11, "y": 0, "w": 1, "h": 1 },
   { "id": "workbench", "sprite": "workbench", "x": 5, "y": 5, "w": 3, "h": 2 },
-  { "id": "terminal", "sprite": "terminal", "x": 10, "y": 7, "w": 1, "h": 1 }
+  { "id": "mailbox", "sprite": "mailbox", "x": 11, "y": 7, "w": 1, "h": 1 }
 ]

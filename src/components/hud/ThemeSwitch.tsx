@@ -1,21 +1,9 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../../state/useAppStore';
+import { ICONS } from '../ui/icons';
+import { PixelIcon } from '../ui/PixelIcon';
 import styles from './hud.module.css';
-
-// 9x9 pixel icons drawn as rects so they stay crisp at any zoom.
-const SUN = ['....#....', '.#.....#.', '...###...', '..#####..', '#.#####.#', '..#####..', '...###...', '.#.....#.', '....#....'];
-const MOON = ['...####..', '..##.....', '.##......', '.##......', '.##......', '.##......', '..##.....', '...####..', '.........'];
-
-function PixelIcon({ rows }: { rows: string[] }) {
-  return (
-    <svg className={styles.pixelIcon} viewBox="0 0 9 9" aria-hidden="true" shapeRendering="crispEdges">
-      {rows.flatMap((row, y) =>
-        [...row].map((cell, x) => (cell === '#' ? <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" /> : null)),
-      )}
-    </svg>
-  );
-}
 
 /** Day/night switch for the room lighting. */
 export function ThemeSwitch() {
@@ -39,10 +27,10 @@ export function ThemeSwitch() {
       onClick={() => setTime(isNight ? 'day' : 'night')}
     >
       <span className={styles.switchSide} data-active={!isNight}>
-        <PixelIcon rows={SUN} />
+        <PixelIcon rows={ICONS.sun} />
       </span>
       <span className={styles.switchSide} data-active={isNight}>
-        <PixelIcon rows={MOON} />
+        <PixelIcon rows={ICONS.moon} />
       </span>
       <span className={styles.knob} data-night={isNight} aria-hidden="true" />
     </button>

@@ -71,7 +71,6 @@ export class RoomEngine {
   private hoverCursor!: Sprite;
   private targetCursor!: Sprite;
   private arm!: Sprite;
-  private antenna!: Sprite;
   private hovered: SectionId | null = null;
   private pendingSection: SectionId | null = null;
   private clock = 0;
@@ -231,7 +230,7 @@ export class RoomEngine {
     return s;
   }
 
-  /** Robot arm on the workbench and the blinking antenna light on the contact terminal. */
+  /** Robot arm on the workbench. */
   private addAmbientDetails(): void {
     const bench = this.furnitureViews.get('workbench');
     if (bench) {
@@ -240,14 +239,6 @@ export class RoomEngine {
       const base = tileToWorld(1.4, 1.0, 25);
       this.arm.position.set(base.x - ax, base.y - ay);
       bench.addChild(this.arm);
-    }
-    const terminal = this.furnitureViews.get('terminal');
-    if (terminal) {
-      this.antenna = new Sprite(this.textures.fx.spark);
-      this.antenna.anchor.set(0.5);
-      const tip = tileToWorld(0.72, 0.32, 47);
-      this.antenna.position.set(tip.x, tip.y);
-      terminal.addChild(this.antenna);
     }
   }
 
@@ -376,6 +367,5 @@ export class RoomEngine {
       const index = step < frames ? step : step < frames + 4 ? frames - 1 : Math.max(0, frames - 1 - (step - frames - 4));
       this.arm.texture = this.textures.arm[Math.min(frames - 1, index)]!;
     }
-    if (this.antenna) this.antenna.alpha = still ? 0.8 : 0.35 + 0.65 * Math.max(0, Math.sin(t * 3));
   }
 }

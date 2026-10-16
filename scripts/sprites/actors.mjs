@@ -1,6 +1,5 @@
 // Avatar sprite sheet, robot arm animation strip and small effect sprites.
 import { PixelCanvas, shade } from './lib/canvas.mjs';
-import { glow } from './lib/iso.mjs';
 import { C } from './palette.mjs';
 
 export const AVATAR_FRAME = { width: 18, height: 40 };
@@ -232,12 +231,5 @@ export function shadowSprite() {
   const c = new PixelCanvas(18, 8);
   c.ellipse(9, 4, 8, 3.5, [8, 8, 14, 90]);
   c.ellipse(9, 4, 5, 2.2, [8, 8, 14, 50]);
-  return c;
-}
-
-export function sparkSprite() {
-  const c = new PixelCanvas(9, 9);
-  glow(c, 4.5, 4.5, 4.5, 4.5, C.cyan, 140, 3);
-  c.set(4, 4, '#e8feff');
   return c;
 }

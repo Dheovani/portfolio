@@ -206,25 +206,31 @@ export function workbench() {
   return s;
 }
 
-export function terminal() {
+/** Classic post mailbox: wooden post, rounded metal box, raised red flag and a letter waiting. */
+export function mailbox() {
   const s = isoSprite(1, 1, 50);
-  box(s, 0.2, 0.2, 0.8, 0.8, 0, 3, C.graphite);
-  box(s, 0.4, 0.4, 0.6, 0.6, 3, 22, C.metalDark);
-  box(s, 0.14, 0.24, 0.86, 0.76, 22, 37, C.graphite);
-  paintPlaneY(s, 0.76, 0.2, 0.8, 24, 35, (x, z) => {
-    // Envelope glyph.
-    const u = (x - 0.2) * 16;
-    const v = 35 - z;
-    if (u > 1.5 && u < 8.5 && v > 2.5 && v < 8.5) {
-      const onEdge = u < 2.5 || u > 7.5 || v < 3.5 || v > 7.5;
-      const onFlap = Math.abs(v - 2.5 - (3.5 - Math.abs(u - 5)) * 0.85) < 0.6;
-      if (onEdge || onFlap) return C.cyan;
-    }
-    return C.screen;
+  const metal = '#4f6f8f';
+  box(s, 0.32, 0.32, 0.68, 0.68, 0, 2, C.woodDark);
+  box(s, 0.43, 0.43, 0.57, 0.57, 2, 25, C.wood);
+  box(s, 0.36, 0.36, 0.64, 0.64, 24, 26, C.woodDark);
+  // Body with a rounded lid built from stacked, narrowing slabs.
+  box(s, 0.12, 0.32, 0.88, 0.68, 26, 34, metal, { edges: false });
+  box(s, 0.12, 0.35, 0.88, 0.65, 34, 36, metal, { edges: false });
+  box(s, 0.12, 0.39, 0.88, 0.61, 36, 37.5, metal);
+  // Door on the front-right face, with a hinge seam and a small latch.
+  paintPlaneX(s, 0.88, 0.32, 0.68, 26, 37.5, (y, z) => {
+    const arch = 34 + Math.sqrt(Math.max(0, 1 - ((y - 0.5) / 0.18) ** 2)) * 3.5;
+    if (z > arch) return undefined;
+    const edge = y < 0.36 || y > 0.64 || z < 27 || z > arch - 1;
+    if (edge) return shade(metal, 0.62);
+    if (Math.abs(y - 0.5) < 0.04 && Math.abs(z - 31) < 1) return C.metalLight;
+    return shade(metal, 0.8);
   });
-  paintPlaneX(s, 0.86, 0.32, 0.68, 25, 34, (y, z) => (Math.round(y * 16) % 2 === 0 && Math.round(z) % 2 === 0 ? C.metal : undefined));
-  const base = s.P(0.72, 0.32, 37);
-  s.canvas.line(base[0], base[1], base[0], base[1] - 9, C.metalLight);
+  // A letter sticking out of the door.
+  box(s, 0.88, 0.4, 0.98, 0.6, 32, 33.5, '#ece6d8');
+  // Raised flag on the side facing the viewer.
+  box(s, 0.62, 0.68, 0.66, 0.72, 29, 45, C.metalDark, { edges: false });
+  box(s, 0.38, 0.68, 0.64, 0.72, 41, 45, C.red, { edges: false });
   return s;
 }
 
@@ -233,10 +239,5 @@ export const glows = {
   nightstand: (s) => {
     const p = s.P(0.52, 0.52, 27);
     glow(s.canvas, p[0], p[1], 12, 9, C.warm, 40, 4);
-  },
-  terminal: (s) => {
-    const p = s.P(0.72, 0.32, 47);
-    glow(s.canvas, p[0], p[1], 3, 3, C.red, 120, 2);
-    s.canvas.set(p[0], p[1], '#ffb3a6');
   },
 };

@@ -111,8 +111,8 @@
         2
       ]
     },
-    "terminal": {
-      "file": "terminal.png",
+    "mailbox": {
+      "file": "mailbox.png",
       "anchor": [
         18,
         52
@@ -164,11 +164,6 @@
       "file": "shadow.png",
       "width": 18,
       "height": 8
-    },
-    "spark": {
-      "file": "spark.png",
-      "width": 9,
-      "height": 9
     }
   }
 }

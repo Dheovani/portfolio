@@ -32,7 +32,7 @@
     "experience": "Computer desk",
     "education": "Bookshelf",
     "projects": "Engineering workbench",
-    "contact": "Comms terminal"
+    "contact": "Mailbox"
   },
   "sections": {
     "about": "About me",
@@ -66,5 +66,27 @@
       "certification": "Certification"
     },
     "contactIntro": "Use the channels below to talk about projects, technical consulting, or professional opportunities."
+  },
+  "radio": {
+    "label": "Lo-fi radio",
+    "open": "Open radio",
+    "close": "Close radio",
+    "play": "Play",
+    "pause": "Pause",
+    "next": "Next track",
+    "previous": "Previous track",
+    "mute": "Mute",
+    "volume": "Volume",
+    "ready": "Ready",
+    "loading": "Loading…",
+    "playing": "Playing",
+    "paused": "Paused",
+    "blocked": "Press play to listen",
+    "error": "Track unavailable",
+    "credits": "Credits",
+    "artist": "Artist",
+    "album": "Album",
+    "license": "License",
+    "unmodified": "Original tracks by the artist, audio unmodified (only the files were renamed)."
   }
 }

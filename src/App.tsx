@@ -5,6 +5,7 @@ import { IdentityTag } from './components/hud/IdentityTag';
 import { LanguageSwitcher } from './components/hud/LanguageSwitcher';
 import { ThemeSwitch } from './components/hud/ThemeSwitch';
 import { SectionPanel } from './components/panel/SectionPanel';
+import { RadioWidget } from './components/radio/RadioWidget';
 import { RoomStage } from './components/room/RoomStage';
 import { profile } from './content/profile';
 import { useLocale } from './i18n';
@@ -25,6 +26,7 @@ export function App() {
         <ThemeSwitch />
         <HelpButton />
       </div>
+      <RadioWidget />
       <SectionPanel />
     </main>
   );
