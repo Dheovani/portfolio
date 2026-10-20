@@ -37,6 +37,8 @@ const builders = {
   bed: furniture.bed,
   nightstand: furniture.nightstand,
   bookshelf: furniture.bookshelf,
+  diplomaWall: furniture.diplomaWall,
+  petBeds: furniture.petBeds,
   desk: furniture.desk,
   chair: furniture.chair,
   pcTower: furniture.pcTower,
@@ -97,7 +99,8 @@ function writePreview(file) {
   const iso = (x, y) => [ox + (x - y) * 16, oy + (x + y) * 8];
   const avatarAt = { x: 6, y: 9, w: 1, h: 1 };
   const items = [...placements.map((p) => ({ ...p })), { id: 'avatar', ...avatarAt }];
-  items.sort((a, b) => a.x + a.w + a.y + a.h - (b.x + b.w + b.y + b.h));
+  const depth = (i) => (i.wall ? -1 : i.x + i.w + i.y + i.h);
+  items.sort((a, b) => depth(a) - depth(b));
   for (const item of items) {
     if (item.id === 'avatar') {
       const [x, y] = iso(item.x + 0.5, item.y + 0.5);

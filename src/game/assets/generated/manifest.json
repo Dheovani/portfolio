@@ -45,6 +45,28 @@
         2
       ]
     },
+    "diplomaWall": {
+      "file": "diplomaWall.png",
+      "anchor": [
+        50,
+        70
+      ],
+      "footprint": [
+        1,
+        3
+      ]
+    },
+    "petBeds": {
+      "file": "petBeds.png",
+      "anchor": [
+        50,
+        22
+      ],
+      "footprint": [
+        1,
+        3
+      ]
+    },
     "desk": {
       "file": "desk.png",
       "anchor": [

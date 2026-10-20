@@ -196,7 +196,9 @@ export class RoomEngine {
       view.position.set(p.x, p.y);
       this.entities.addChild(view);
       this.furnitureViews.set(f.id, view);
-      this.staticEntities.push({ box: f, view });
+      // Wall decorations stay behind everything on the floor and skip depth sorting.
+      if (f.wall) view.zIndex = -1;
+      else this.staticEntities.push({ box: f, view });
     }
     this.addAmbientDetails();
 

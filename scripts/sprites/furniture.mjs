@@ -1,6 +1,6 @@
 // Furniture sprites. Each returns an iso sprite whose anchor is the back corner of its footprint.
-import { shade, rng } from './lib/canvas.mjs';
-import { isoSprite, box, paintPlaneX, paintPlaneY, paintPlaneZ, glow, material } from './lib/iso.mjs';
+import { PixelCanvas, shade, rng } from './lib/canvas.mjs';
+import { isoSprite, box, HALF_W, paintPlaneX, paintPlaneY, paintPlaneZ, glow, material } from './lib/iso.mjs';
 import { C, BOOK_COLORS } from './palette.mjs';
 import { hash2 } from './room.mjs';
 
@@ -69,6 +69,111 @@ export function bookshelf() {
   const eye = s.P(0.65, 1.42, 64);
   s.canvas.set(eye[0], eye[1], C.cyan);
   box(s, 0, 1.9, 1, 2, 0, 56, C.wood);
+  return s;
+}
+
+/**
+ * Gallery of framed diplomas hung on the left wall (plane x = 0), one per education entry.
+ * Each frame: dark border, cream paper, a few text lines and a seal in the institution's colour.
+ */
+export function diplomaWall() {
+  const s = isoSprite(1, 3, 68);
+  const frame = '#2b211d';
+  const paper = '#ece5d4';
+  const ink = '#9a907e';
+  // [y0, y1, z0, z1, seal colour] — top row of three, bottom row of two.
+  const frames = [
+    [0.18, 0.92, 47, 62, '#8c2a5c'],
+    [1.12, 1.88, 48, 64, '#2f5fa8'],
+    [2.08, 2.82, 47, 62, '#2f5fa8'],
+    [0.62, 1.42, 29, 43, '#3f7d4e'],
+    [1.62, 2.38, 30, 42, '#2b6cb0'],
+  ];
+  for (const [y0, y1, z0, z1, seal] of frames) {
+    const w = (y1 - y0) * HALF_W;
+    const h = z1 - z0;
+    // Soft shadow on the wall, one pixel down.
+    paintPlaneX(s, 0, y0 + 0.04, y1 + 0.04, z0 - 1.5, z1 - 1.5, () => [10, 10, 16, 70]);
+    paintPlaneX(s, 0, y0, y1, z0, z1, (y, z) => {
+      const u = (y1 - y) * HALF_W; // left to right as seen on the wall
+      const v = z1 - z; // top to bottom
+      if (u < 1.2 || u > w - 1.2 || v < 1.2 || v > h - 1.2) return frame;
+      if (u < 2.2 || u > w - 2.2 || v < 2.2 || v > h - 2.2) return shade(paper, 0.88);
+      if (Math.hypot(u - (w - 4.2), v - (h - 4.2)) < 1.8) return seal;
+      if (Math.abs(v - 3.6) < 0.5 && u > w * 0.25 && u < w * 0.75) return seal;
+      if ([6, 8, 10].some((row) => Math.abs(v - row) < 0.45) && u > 3.5 && u < w - 3.5 && v < h - 6) return ink;
+      return paper;
+    });
+  }
+  return s;
+}
+
+/** Round pet bed centred on (cx, cy) in screen pixels. */
+function petBed(canvas, cx, cy, color) {
+  canvas.ellipse(cx, cy + 1, 10.5, 5.2, shade(color, 0.5));
+  canvas.ellipse(cx, cy - 1, 10.5, 5.2, shade(color, 0.75));
+  canvas.ellipse(cx, cy - 3, 10, 4.9, color);
+  canvas.ellipse(cx, cy - 3, 7.5, 3.5, shade(color, 0.7));
+  canvas.ellipse(cx, cy - 2.6, 7, 3.1, shade(color, 1.12));
+}
+
+const PET_COLORS = {
+  o: C.outline,
+  // Cat: orange tabby with white chest and paws.
+  O: '#d9853c',
+  L: '#eda25a',
+  D: '#b8692b',
+  W: '#f4efe6',
+  p: '#e39a9a',
+  // Pinscher: black and tan.
+  B: '#24201e',
+  b: '#3d3532',
+  T: '#b8773a',
+  n: '#4a3a34',
+  k: '#3a2c26',
+};
+
+// Curled up asleep, head on the right.
+const CAT = [
+  '..........o..o..',
+  '...ooooo.oOooOo.',
+  '..oOLOLOooOOOOOo',
+  '.oOOLOLOOoOkOkOo',
+  '.oOOOOOOOOOOWWWo',
+  '.oWWOOOOOOOWWpWo',
+  '..oWWWWWWWWWWWo.',
+  '...oDDDDDDDooo..',
+  '....ooooooo.....',
+];
+
+const PINSCHER = [
+  '..........o...o.',
+  '...oooooooBo.oBo',
+  '..oBbbBBBBoBooBo',
+  '.oBbBBBBBBBTBBTo',
+  '.oBBBBBBBBBBTBBo',
+  '.oBBBBBBBBBTTTno',
+  '..oBBBBBBBBoTTo.',
+  '...oTToTTooo....',
+  '....oo.oo.......',
+];
+
+function petSprite(rows) {
+  const c = new PixelCanvas(rows[0].length, rows.length);
+  c.grid(0, 0, rows, PET_COLORS);
+  return c;
+}
+
+/** The author's cat and pinscher asleep in their beds under the diploma wall. */
+export function petBeds() {
+  const s = isoSprite(1, 3, 20);
+  const pinscher = s.P(0.55, 0.75, 0);
+  petBed(s.canvas, pinscher[0], pinscher[1], '#c2b49a');
+  s.canvas.blit(petSprite(PINSCHER), pinscher[0] - 8, pinscher[1] - 11);
+
+  const cat = s.P(0.55, 2.25, 0);
+  petBed(s.canvas, cat[0], cat[1], '#9e3040');
+  s.canvas.blit(petSprite(CAT), cat[0] - 8, cat[1] - 11);
   return s;
 }
 

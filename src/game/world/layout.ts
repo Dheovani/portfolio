@@ -12,6 +12,8 @@ export interface FurniturePlacement {
   y: number;
   w: number;
   h: number;
+  /** Hung on a wall: takes no floor space and is always drawn behind floor objects. */
+  wall?: boolean;
 }
 
 export interface Interactable {
@@ -21,6 +23,8 @@ export interface Interactable {
   approach: Tile[];
   /** Visual height in px, used for the hit area and the floating marker. */
   height: number;
+  /** Lowest clickable height in px (wall decorations hang above the floor). */
+  hitFrom?: number;
   /** Optional marker position relative to the footprint origin (tiles, px), when the centre is ambiguous. */
   marker?: { x: number; y: number; z: number };
 }
@@ -52,13 +56,16 @@ export const INTERACTABLES: readonly Interactable[] = [
   },
   {
     section: 'education',
-    objectId: 'bookshelf',
+    objectId: 'diplomaWall',
     approach: [
       { x: 1, y: 8 },
       { x: 1, y: 9 },
       { x: 1, y: 10 },
     ],
     height: 66,
+    hitFrom: 28,
+    // The frames hang on the wall, so the marker floats just above them.
+    marker: { x: 0.2, y: 1.5, z: 72 },
   },
   {
     section: 'projects',

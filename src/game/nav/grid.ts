@@ -16,6 +16,7 @@ export class NavGrid {
   static fromFurniture(cols: number, rows: number, furniture: readonly FurniturePlacement[]): NavGrid {
     const grid = new NavGrid(cols, rows);
     for (const f of furniture) {
+      if (f.wall) continue;
       for (let y = f.y; y < f.y + f.h; y++) for (let x = f.x; x < f.x + f.w; x++) grid.block({ x, y });
     }
     return grid;

@@ -63,7 +63,7 @@ describe('room layout', () => {
 
   it('keeps furniture inside the room without overlaps', () => {
     const grid = new NavGrid(ROOM.cols, ROOM.rows);
-    for (const f of FURNITURE) {
+    for (const f of FURNITURE.filter((item) => !item.wall)) {
       for (let y = f.y; y < f.y + f.h; y++) {
         for (let x = f.x; x < f.x + f.w; x++) {
           expect(grid.isWalkable({ x, y }), `${f.id} at ${x},${y}`).toBe(true);

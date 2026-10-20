@@ -8,12 +8,13 @@ import { furnitureById, INTERACTABLES, type Interactable } from '../world/layout
 export function objectHull(item: Interactable): Point[] {
   const f = furnitureById(item.objectId);
   const z = item.height;
+  const z0 = item.hitFrom ?? 0;
   return [
     tileToWorld(f.x, f.y, z),
     tileToWorld(f.x + f.w, f.y, z),
-    tileToWorld(f.x + f.w, f.y, 0),
-    tileToWorld(f.x + f.w, f.y + f.h, 0),
-    tileToWorld(f.x, f.y + f.h, 0),
+    tileToWorld(f.x + f.w, f.y, z0),
+    tileToWorld(f.x + f.w, f.y + f.h, z0),
+    tileToWorld(f.x, f.y + f.h, z0),
     tileToWorld(f.x, f.y + f.h, z),
   ];
 }
