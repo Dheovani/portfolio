@@ -91,6 +91,10 @@ Edite os arquivos em `src/content/`. Cada texto tem as três línguas (`{ pt, en
 
 Valores ainda desconhecidos usam `PENDING` e aparecem nos painéis com a marcação tracejada "a preencher". Basta substituí-los pelo valor real.
 
+### Certificados
+
+Os PDFs originais **não** são publicados (contêm RG, CPF e data de nascimento). Cada formação tem um `certificate` em `src/content/education.ts` só com dados seguros (instituição, local, data, carga horária), exibido como um cartão visual no painel de formação. Um teste falha se algum `.pdf` for adicionado a `src/` ou `public/`. Arquivos pessoais locais podem ficar em `.tmp/`, que é ignorada pelo git.
+
 ## Sprites
 
 Os sprites atuais são **provisórios e originais**, gerados por código em `scripts/sprites/` (paleta em `palette.mjs`, sala em `room.mjs`, móveis em `furniture.mjs`, avatar e braço robótico em `actors.mjs`). Para trocar por arte desenhada à mão, substitua os PNGs em `src/game/assets/generated/` mantendo as âncoras do `manifest.json`, ou ajuste o gerador e rode `npm run sprites -- --preview preview.png`.

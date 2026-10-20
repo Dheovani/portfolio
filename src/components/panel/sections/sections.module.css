@@ -238,3 +238,26 @@
   display: grid;
   gap: 8px;
 }
+
+.linkButton {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.backButton {
+  justify-self: start;
+  padding: 4px 10px;
+  border: 2px solid var(--edge);
+  background: var(--panel-raised);
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--ink-dim);
+  cursor: pointer;
+}
+
+.backButton:hover {
+  color: var(--ink);
+  border-color: var(--edge-light);
+}

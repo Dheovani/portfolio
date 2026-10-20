@@ -1,0 +1,133 @@
+.card {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+/* Cream "paper" inside a pixel frame tinted with the institution's accent. */
+.paper {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 26px 22px 30px;
+  background:
+    repeating-linear-gradient(0deg, rgb(0 0 0 / 0.025) 0 2px, transparent 2px 4px),
+    #f2ede1;
+  color: #2a2620;
+  text-align: center;
+  border: 4px solid var(--accent);
+  box-shadow:
+    inset 0 0 0 2px #f2ede1,
+    inset 0 0 0 4px color-mix(in srgb, var(--accent) 55%, #f2ede1),
+    0 0 0 2px var(--outline),
+    0 6px 0 2px rgb(0 0 0 / 0.35);
+}
+
+.paper p {
+  margin: 0;
+}
+
+.issuer {
+  padding-inline: 40px;
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.documentType {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(22px, 5vw, 30px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.rule {
+  width: 64px;
+  height: 4px;
+  margin: 4px 0;
+  background: var(--accent);
+}
+
+.awarded {
+  font-size: 13px;
+  color: #6b6255;
+}
+
+.holder {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(20px, 4.5vw, 26px);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.course {
+  max-width: 34ch;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 18px;
+  margin: 10px 0 0;
+  font-size: 12px;
+}
+
+.details dt {
+  font-family: var(--font-pixel);
+  color: #8a8172;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.details dd {
+  margin: 0;
+  color: #2a2620;
+}
+
+/* Pixel rosette in the corner instead of the institution's seal. */
+.seal {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  background: var(--accent);
+  clip-path: polygon(30% 0, 70% 0, 70% 10%, 90% 10%, 90% 30%, 100% 30%, 100% 70%, 90% 70%, 90% 90%, 70% 90%, 70% 100%, 30% 100%, 30% 90%, 10% 90%, 10% 70%, 0 70%, 0 30%, 10% 30%, 10% 10%, 30% 10%);
+  opacity: 0.85;
+}
+
+.seal::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  background: #f2ede1;
+}
+
+.note {
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 600px) {
+  .paper {
+    padding: 20px 14px 24px;
+  }
+
+  .seal {
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .seal::after {
+    inset: 8px;
+  }
+}

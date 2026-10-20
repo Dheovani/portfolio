@@ -35,13 +35,36 @@ export interface ExperienceEntry {
 
 export type EducationKind = 'degree' | 'postgraduate' | 'certification';
 
+/** ISO date: 'YYYY-MM-DD', or 'YYYY' when only the year is known. */
+export type IsoDate = string;
+
+export interface DateRange {
+  start?: IsoDate;
+  end: IsoDate;
+}
+
+/**
+ * What the site shows instead of the original document. Only fields that are safe to publish:
+ * never ID numbers (RG/CPF), birth dates, grades or verification links that reveal them.
+ */
+export interface CertificateSummary {
+  document: 'certificate' | 'diploma';
+  /** Full institution name as printed on the document. */
+  issuer: string;
+  place?: string;
+  issued: IsoDate;
+  hours?: number;
+  /** Accent colour of the visual card (a nod to the institution, without its logo). */
+  accent: string;
+}
+
 export interface EducationEntry {
   kind: EducationKind;
   title: Localized;
   institution: MaybePending<string>;
-  period: MaybePending<Localized>;
+  period: MaybePending<DateRange>;
   description: Localized;
-  certificate?: string;
+  certificate?: CertificateSummary;
 }
 
 export type ProjectStatus = 'active' | 'maintenance';

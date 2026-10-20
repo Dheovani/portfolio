@@ -88,5 +88,15 @@
     "album": "Álbum",
     "license": "Licencia",
     "unmodified": "Pistas originales del artista, audio sin modificar (solo se renombraron los archivos)."
+  },
+  "certificate": {
+    "back": "Volver a la formación",
+    "certificate": "Certificado",
+    "diploma": "Diploma",
+    "awardedTo": "otorgado a",
+    "hours": "Carga horaria",
+    "hoursValue": "{{hours}} horas",
+    "issued": "Emitido en",
+    "note": "Representación visual del documento original. Se omitieron datos personales como documentos de identidad y fecha de nacimiento."
   }
 }
