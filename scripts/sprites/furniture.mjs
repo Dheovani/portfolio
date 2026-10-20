@@ -123,17 +123,33 @@ export function chair() {
   return s;
 }
 
+/** Single-colour fan ring (radius r) around (cu, cv) in face-local pixels, or undefined outside it. */
+function fanRing(u, v, cu, cv, r, color) {
+  const d = Math.hypot(u - cu, v - cv);
+  if (d > r - 1 && d < r + 0.3) return color;
+  if (d < 0.9) return '#2a2e3a';
+  if (d <= r - 1) return '#120f1c';
+  return undefined;
+}
+
+/** Glass-panel PC case: dark frame, softly lit interior, two fans on the front. */
 export function pcTower() {
-  const s = isoSprite(1, 1, 38);
-  box(s, 0.18, 0.12, 0.82, 0.86, 0, 34, C.graphite);
-  paintPlaneY(s, 0.86, 0.26, 0.32, 5, 30, () => C.cyan);
-  paintPlaneX(s, 0.82, 0.2, 0.78, 5, 30, (y, z) => {
-    for (const cz of [12, 23]) {
-      const d = Math.hypot((y - 0.49) * 16, z - cz);
-      if (d > 3.2 && d < 4.4) return C.cyan;
-      if (d < 1.2) return C.metal;
-    }
-    return '#161a24';
+  const s = isoSprite(1, 1, 28);
+  const lilac = '#b48cff';
+  const [x0, x1, y0, y1, z0, z1] = [0.24, 0.76, 0.16, 0.84, 1, 24];
+  for (const y of [0.2, 0.74]) box(s, x0 + 0.04, y, x1 - 0.04, y + 0.06, 0, 1, C.outline, { edges: false });
+  box(s, x0, y0, x1, y1, z0, z1, '#15171f');
+  // Glass side facing the room: power-supply cover, graphics card, rear fan.
+  paintPlaneY(s, y1, x0 + 0.05, x1 - 0.05, z0 + 1.5, z1 - 1.5, (x, z) => {
+    const u = (x - x0) * 16;
+    if (z < z0 + 5) return '#0f1017';
+    if (z > 11 && z < 12.5 && u > 1.5) return z > 12 ? lilac : C.metal;
+    return fanRing(u, z, 4.2, 18, 2.2, lilac) ?? (z > 15 ? '#2a2140' : '#211a33');
+  });
+  // Front: two fans stacked.
+  paintPlaneX(s, x1, y0 + 0.06, y1 - 0.06, z0 + 1.5, z1 - 1.5, (y, z) => {
+    const u = (y - y0) * 16;
+    return fanRing(u, z, 5.4, 8, 3, lilac) ?? fanRing(u, z, 5.4, 16.5, 3, lilac) ?? '#121420';
   });
   return s;
 }
